@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="HIPSTER - Modern fashion for men and women."
+    >
+
+    <title>HIPSTER | Fashion & Clothing</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Mega Menu CSS (hover dropdowns) -->
+    <link rel="stylesheet" href="css/mega-menu.css">
+</head>
+
+<body>
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header class="site-header">
+
+    <!-- ================= TOP NAVIGATION ================= -->
+
+    <div class="top-header">
+
+        <!-- Logo -->
+        <div class="logo-area">
+            <a href="#" class="logo">
+                HIPSTER
+            </a>
+        </div>
+
+        <!-- Gender Navigation -->
+        <nav class="gender-navigation">
+
+            <a href="#" class="gender-link active">
+                WOMEN
+            </a>
+
+            <a href="#" class="gender-link">
+                MEN
+            </a>
+
+        </nav>
+
+        <!-- Search -->
+        <div class="search-container">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search for items and brands"
+                autocomplete="off"
+            >
+
+            <button
+                class="search-button"
+                id="searchButton"
+                aria-label="Search"
+            >
+                <span class="search-icon"></span>
+            </button>
+
+        </div>
+
+        <!-- Header Icons -->
+        <div class="header-actions">
+
+            <!-- Account -->
+            <button
+                class="header-icon-button"
+                id="accountButton"
+                aria-label="Account"
+            >
+                <span class="user-icon"></span>
+            </button>
+
+            <!-- Wishlist -->
+            <button
+                class="header-icon-button"
+                id="wishlistButton"
+                aria-label="Wishlist"
+            >
+                <span class="heart-icon">♡</span>
+            </button>
+
+            <!-- Bag -->
+            <button
+                class="header-icon-button"
+                id="bagButton"
+                aria-label="Shopping bag"
+            >
+                <span class="bag-icon"></span>
+
+                <span
+                    class="cart-count"
+                    id="cartCount"
+                >
+                    0
+                </span>
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= CATEGORY NAVIGATION ================= -->
+
+    <div class="category-navigation">
+
+        <nav class="category-menu">
+
+            <!-- =====================================================
+                 DROPDOWN 1 of 10 — "NEW IN"
+                 (mega-menu.css / mega-menu.js power the hover panel)
+            ====================================================== -->
+
+            <div class="nav-item has-mega" id="navNewIn">
+
+                <a href="#latest" class="nav-link">
+                    New in
+                </a>
+
+                <div class="mega-panel" id="megaNewIn">
+
+                    <div class="mega-columns">
+
+                        <!-- Column 1: New Products -->
+                        <div class="mega-col">
+
+                            <h3>New Products</h3>
+
+                            <div class="mega-links">
+
+                                <a href="#" class="strong">View all</a>
+                                <a href="#" class="strong">New in: Today</a>
+                                <a href="#" class="strong">New in: Selling fast</a>
+                                <a href="#">Clothing</a>
+                                <a href="#">Shoes</a>
+                                <a href="#">T-Shirts &amp; Vests</a>
+                                <a href="#">Hoodies &amp; Sweatshirts</a>
+                                <a href="#">Coats &amp; Jackets</a>
+                                <a href="#">Jeans &amp; Trousers</a>
+                                <a href="#">Accessories</a>
+
+                            </div>
+
+                        </div>
+
+                        <!-- Column 2: Students -->
+                        <div class="mega-col">
+
+                            <h3>Students</h3>
+
+                            <div class="mega-links">
+
+                                <a href="#">View all</a>
+                                <a href="#">Lecture lookbook</a>
+                                <a href="#">Nights out</a>
+                                <a href="#">Graphic tees</a>
+                                <a href="#">Light layers</a>
+                                <a href="#">Complete the look</a>
+
+                            </div>
+
+                        </div>
+
+                        <!-- Column 3: Season -->
+                        <div class="mega-col">
+
+                            <h3>Season</h3>
+
+                            <div class="mega-links">
+
+                                <a href="#">View all</a>
+                                <a href="#">Seasonal shop</a>
+                                <a href="#">Outerwear</a>
+                                <a href="#">Knitwear</a>
+                                <a href="#">Festival fits</a>
+                                <a href="#">Footwear edit</a>
+
+                            </div>
+
+                            <!-- Small app promo strip, like the reference -->
+                            <div class="mega-app-strip">
+
+                                <div class="app-glyph">
+                                    H
+                                </div>
+
+                                <div class="app-text">
+                                    HIPSTER on-the-go
+                                </div>
+
+                                <button type="button">
+                                    DOWNLOAD
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                        <!-- Column 4: Feature image -->
+                        <a href="#" class="mega-feature">
+
+                            <img
+                                src="images/menu/new-in-feature.jpg"
+                                alt="New season essentials"
+                            >
+
+                            <span class="banner-caption">
+                                SEASON ESSENTIALS
+                            </span>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <a href="#clothing">Clothing</a>
+
+            <a href="#shoes">Shoes</a>
+
+            <a href="#accessories">Accessories</a>
+
+            <a href="#brands">Brands</a>
+
+            <a href="#activewear">Activewear</a>
+
+            <a href="#grooming">Grooming</a>
+
+            <a href="#tailoring">Tailoring</a>
+
+            <a href="#topman">Topman</a>
+
+            <a href="#sale">Sale</a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================================
+     PROMOTIONAL BAR
+========================================================= -->
+
+<section class="promotion-bar">
+
+    <div class="promotion-item">
+        <strong>
+            The up-to-30%-off edit*
+        </strong>
+    </div>
+
+    <div class="promotion-item">
+        <strong>
+            FREE WORLDWIDE DELIVERY
+        </strong>
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     HERO SECTION
+========================================================= -->
+
+<section class="hero-section">
+
+    <div class="hero-content">
+
+        <div class="hero-text">
+
+            <h1>
+                The up-to-30%-off edit
+            </h1>
+
+            <p>
+                Limited time only. Selected styles marked down as shown.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     HERO IMAGE / SHOP NOW SECTION
+========================================================= -->
+
+<section class="hero-fashion">
+
+    <div class="hero-fashion-image">
+
+        <!--
+            Replace this image later with your own hero image.
+        -->
+
+        <img
+            src="images/hero.avif"
+            alt="HIPSTER new season fashion"
+        >
+
+        <div class="hero-fashion-overlay">
+
+            <a
+                href="#latest"
+                class="hero-link hero-link-left"
+            >
+                NEW-SEASON EDIT
+            </a>
+
+            <a
+                href="#latest"
+                class="hero-link hero-link-right"
+            >
+                SHOP NOW
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     MAIN CONTENT
+========================================================= -->
+
+<main>
+
+
+    <!-- =====================================================
+         LATEST DROPS
+    ====================================================== -->
+
+    <section
+        class="product-section"
+        id="latest"
+    >
+
+        <!-- Section Header -->
+
+        <div class="section-header">
+
+            <h2>
+                The latest drops
+            </h2>
+
+            <a
+                href="#"
+                class="shop-now-button"
+            >
+                SHOP NOW
+            </a>
+
+        </div>
+
+
+        <!-- Product Slider -->
+
+        <div class="product-slider-wrapper">
+
+            <!-- Previous Button -->
+
+            <button
+                class="slider-arrow slider-arrow-left"
+                data-slider="latestProducts"
+                data-direction="prev"
+                aria-label="Previous products"
+            >
+                &#10094;
+            </button>
+
+
+            <!-- Product Container -->
+
+            <div
+                class="product-slider"
+                id="latestProducts"
+            >
+
+                <!-- Product 1 -->
+
+                <article class="product-card">
+
+                    <a href="#" class="product-image-link">
+
+                        <img
+                            src="images/product-1.jpeg"
+                            alt="Calvin Klein Jeans burgundy t-shirt"
+                        >
+
+                    </a>
+
+                    <div class="product-info">
+
+                        <h3>
+                            Calvin Klein Jeans woven label t-shirt in burgundy
+                        </h3>
+
+                        <p class="product-price">
+                            $48.00
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- Product 2 -->
+
+                <article class="product-card">
+
+                    <a href="#" class="product-image-link">
+
+                        <img
+                            src="images/product-2.jpeg"
+                            alt="Cernucci grey football jersey"
+                        >
+
+                    </a>
+
+                    <div class="product-info">
+
+                        <h3>
+                            Cernucci long sleeve v-neck football jersey in grey
+                        </h3>
+
+                        <p class="product-price">
+                            $79.00
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- Product 3 -->
+
+                <article class="product-card">
+
+                    <a href="#" class="product-image-link">
+
+                        <img
+                            src="images/product-3.jpeg"
+                            alt="Abercrombie and Fitch green jumper"
+                        >
+
+                    </a>
+
+                    <div class="product-info">
+
+                        <h3>
+                            Abercrombie & Fitch knitted long sleeve button up polo jumper with contrast collar
+                        </h3>
+
+                        <p class="product-price">
+                            $103.00
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- Product 4 -->
+
+                <article class="product-card">
+
+                    <a href="#" class="product-image-link">
+
+                        <img
+                            src="images/product-4.jpeg"
+                            alt="Topman tan carpenter jeans"
+                        >
+
+                    </a>
+
+                    <div class="product-info">
+
+                        <h3>
+                            Topman rigid baggy fit carpenter jean in tan
+                        </h3>
+
+                        <p class="product-price">
+                            $84.00
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- Product 5 -->
+
+                <article class="product-card">
+
+                    <a href="#" class="product-image-link">
+
+                        <img
+                            src="images/product-5.jpg"
+                            alt="Black fashion t-shirt"
+                        >
+
+                    </a>
+
+                    <div class="product-info">
+
+                        <h3>
+                            HIPSTER relaxed fit premium t-shirt in black
+                        </h3>
+
+                        <p class="product-price">
+                            $45.00
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- Product 6 -->
+
+                <article class="product-card">
+
+                    <a href="#" class="product-image-link">
+
+                        <img
+                            src="images/product-6.jpg"
+                            alt="Casual men's jacket"
+                        >
+
+                    </a>
+
+                    <div class="product-info">
+
+                        <h3>
+                            HIPSTER oversized casual jacket in charcoal
+                        </h3>
+
+                        <p class="product-price">
+                            $92.00
+                        </p>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <!-- Next Button -->
+
+            <button
+                class="slider-arrow slider-arrow-right"
+                data-slider="latestProducts"
+                data-direction="next"
+                aria-label="Next products"
+            >
+                &#10095;
+            </button>
+
+        </div>
+
+
+        <!-- Slider Dots -->
+
+        <div
+            class="slider-dots"
+            id="latestDots"
+        >
+
+            <span class="slider-dot active"></span>
+            <span class="slider-dot"></span>
+            <span class="slider-dot"></span>
+            <span class="slider-dot"></span>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SHIRTS
+    ====================================================== -->
+
+    <section
+        class="product-section"
+        id="clothing"
+    >
+
+        <!-- Section Header -->
+
+        <div class="section-header">
+
+            <h2>
+                Shirts
+            </h2>
+
+            <a
+                href="#"
+                class="shop-now-button"
+            >
+                SHOP NOW
+            </a>
+
+        </div>
+
+
+        <!-- Product Slider -->
+
+        <div class="product-slider-wrapper">
+
+            <!-- Previous -->
+
+            <button
+                class="slider-arrow slider-arrow-left"
+                data-slider="shirtProducts"
+                data-direction="prev"
+                aria-label="Previous shirts"
+            >
+                &#10094;
+            </button>
+
+
+            <!-- Products -->
+
+            <div
+                class="product-slider"
+                id="shirtProducts"
+            >
+
+                <!-- Shirt 1 -->
+
+                <article class="product-card">
+
+                    <a href="#" class="product-image-link">
+
+                        <img
+                            src="images/shirts-1.jpeg"
+                            alt="Black oversized wrap shirt"
+                        >
+
+                    </a>
+
+                    <div class="product-info">
+
+                        <h3>
+                            HIPSTER DESIGN oversized wrap tie shirt in linen look in black
+                        </h3>
+
+                        <p class="product-price sale-price">
+
+                            <span class="old-price">
+                                $50.53
+                            </span>
+
+                            <span class="new-price">
+                                $37.88
+                            </span>
+
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- Shirt 2 -->
+
+                <article class="product-card">
+
+                    <a href="#" class="product-image-link">
+
+                        <img
+                            src="images/shirts-2.jpeg"
+                            alt="Black denim shirt"
+                        >
+
+                    </a>
+
+                    <div class="product-info">
+
+                        <h3>
+                            Liquor N Poker fireman clasp detail denim shirt in black
+                        </h3>
+
+                        <p class="product-price">
+                            $64.00
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- Shirt 3 -->
+
+                <article class="product-card">
+
+                    <a href="#" class="product-image-link">
+
+                        <img
+                            src="images/shirts-3.jpeg"
+                            alt="Light blue denim shirt"
+                        >
+
+                    </a>
+
+                    <div class="product-info">
+
+                        <h3>
+                            Liquor N Poker denim shirt co-ord with japanese blossom print embroidery
+                        </h3>
+
+                        <p class="product-price">
+                            $64.00
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- Shirt 4 -->
+
+                <article class="product-card">
+
+                    <a href="#" class="product-image-link">
+
+                        <img
+                            src="images/shirts-4.jpeg"
+                            alt="Fred Perry black overshirt"
+                        >
+
+                    </a>
+
+                    <div class="product-info">
+
+                        <h3>
+                            Fred Perry ripstop zip up pocket overshirt in black
+                        </h3>
+
+                        <p class="product-price">
+                            $237.00
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- Shirt 5 -->
+
+                <article class="product-card">
+
+                    <a href="#" class="product-image-link">
+
+                        <img
+                            src="images/shirt-5.jpg"
+                            alt="Casual white shirt"
+                        >
+
+                    </a>
+
+                    <div class="product-info">
+
+                        <h3>
+                            HIPSTER relaxed cotton shirt in white
+                        </h3>
+
+                        <p class="product-price">
+                            $58.00
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- Shirt 6 -->
+
+                <article class="product-card">
+
+                    <a href="#" class="product-image-link">
+
+                        <img
+                            src="images/shirt-6.jpg"
+                            alt="Brown casual shirt"
+                        >
+
+                    </a>
+
+                    <div class="product-info">
+
+                        <h3>
+                            HIPSTER premium overshirt in brown
+                        </h3>
+
+                        <p class="product-price">
+                            $72.00
+                        </p>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <!-- Next -->
+
+            <button
+                class="slider-arrow slider-arrow-right"
+                data-slider="shirtProducts"
+                data-direction="next"
+                aria-label="Next shirts"
+            >
+                &#10095;
+            </button>
+
+        </div>
+
+
+        <!-- Dots -->
+
+        <div
+            class="slider-dots"
+            id="shirtDots"
+        >
+
+            <span class="slider-dot active"></span>
+            <span class="slider-dot"></span>
+            <span class="slider-dot"></span>
+            <span class="slider-dot"></span>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         ADDITIONAL CATEGORY
+    ====================================================== -->
+
+    <section
+        class="category-banner"
+        id="shoes"
+    >
+
+        <div class="category-banner-content">
+
+            <h2>
+                Step into your style
+            </h2>
+
+            <p>
+                Discover the latest footwear collection.
+            </p>
+
+            <a href="#" class="black-button">
+                SHOP SHOES
+            </a>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<!-- =========================================================
+     SOCIAL + PAYMENT METHODS
+========================================================= -->
+
+<section class="social-payment">
+
+    <div class="social-icons">
+
+        <a href="#" aria-label="Facebook">
+            <span class="social-circle facebook">
+                f
+            </span>
+        </a>
+
+        <a href="#" aria-label="Instagram">
+            <span class="social-circle instagram">
+                ◎
+            </span>
+        </a>
+
+        <a href="#" aria-label="Snapchat">
+            <span class="social-circle snapchat">
+                👻
+            </span>
+        </a>
+
+    </div>
+
+
+    <div class="vertical-divider"></div>
+
+
+    <div class="payment-methods">
+
+        <span class="payment-card">
+            VISA
+        </span>
+
+        <span class="payment-card mastercard">
+            ●●
+        </span>
+
+        <span class="payment-card">
+            PayPal
+        </span>
+
+        <span class="payment-card american-express">
+            AMERICAN
+            EXPRESS
+        </span>
+
+        <span class="payment-card">
+            VISA
+            <small>ELECTRON</small>
+        </span>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     NEWSLETTER SECTION
+========================================================= -->
+
+<section class="newsletter">
+
+    <div class="newsletter-content">
+
+        <h2>
+            HEAR ABOUT THE BEST OFFERS AND THE LATEST DROPS FIRST
+        </h2>
+
+        <form
+            class="newsletter-form"
+            id="newsletterForm"
+        >
+
+            <input
+                type="email"
+                id="emailInput"
+                placeholder="Enter your email"
+                required
+            >
+
+            <button type="submit">
+                SUBSCRIBE
+            </button>
+
+        </form>
+
+        <p class="newsletter-disclaimer">
+
+            *By entering your email, you consent to receive marketing
+            emails from HIPSTER in line with our
+            <a href="#">Privacy Policy</a>
+            and
+            <a href="#">Terms & Conditions</a>.
+            You can opt out at any time by clicking
+            'Unsubscribe' at the bottom of our emails.
+
+        </p>
+
+    </div>
+
+
+    <!-- App Promotion -->
+
+    <div class="app-promotion">
+
+        <div class="app-icon">
+            H
+        </div>
+
+        <div class="app-rating">
+
+            <strong>
+                HIPSTER
+            </strong>
+
+            <div class="stars">
+                ★★★★★
+                <span>
+                    1.8m
+                </span>
+            </div>
+
+        </div>
+
+        <button class="download-app-button">
+            DOWNLOAD THE APP
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="site-footer">
+
+    <div class="footer-main">
+
+
+        <!-- Help -->
+
+        <div class="footer-column">
+
+            <h3>
+                HELP & INFORMATION
+            </h3>
+
+            <a href="#">
+                Help
+            </a>
+
+            <a href="#">
+                Track order
+            </a>
+
+            <a href="#">
+                Delivery & returns
+            </a>
+
+            <a href="#">
+                Sitemap
+            </a>
+
+        </div>
+
+
+        <!-- About -->
+
+        <div class="footer-column">
+
+            <h3>
+                ABOUT HIPSTER
+            </h3>
+
+            <a href="#">
+                About us
+            </a>
+
+            <a href="#">
+                Careers at HIPSTER
+            </a>
+
+            <a href="#">
+                Corporate responsibility
+            </a>
+
+            <a href="#">
+                Investors' site
+            </a>
+
+        </div>
+
+
+        <!-- More -->
+
+        <div class="footer-column">
+
+            <h3>
+                MORE FROM HIPSTER
+            </h3>
+
+            <a href="#">
+                Mobile and HIPSTER apps
+            </a>
+
+            <a href="#">
+                Gift vouchers
+            </a>
+
+            <a href="#">
+                Black Friday
+            </a>
+
+        </div>
+
+
+        <!-- Shopping -->
+
+        <div class="footer-column shopping-column">
+
+            <h3>
+                SHOPPING FROM:
+            </h3>
+
+            <p>
+                You're in
+                <span class="country-dot"></span>
+                <strong>
+                    | CHANGE
+                </strong>
+            </p>
+
+            <p class="international-title">
+                Some of our international sites:
+            </p>
+
+            <div class="country-flags">
+
+                <span>🇪🇸</span>
+                <span>🇩🇪</span>
+                <span>🇦🇺</span>
+                <span>🇫🇷</span>
+                <span>🇩🇰</span>
+                <span>🇮🇹</span>
+                <span>🇳🇱</span>
+                <span>🇵🇱</span>
+                <span>🇺🇸</span>
+                <span>🇸🇪</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Footer Bottom -->
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 HIPSTER
+        </p>
+
+        <div class="footer-bottom-links">
+
+            <a href="#">
+                Privacy & Cookies
+            </a>
+
+            <span>|</span>
+
+            <a href="#">
+                T&Cs
+            </a>
+
+            <span>|</span>
+
+            <a href="#">
+                Accessibility
+            </a>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script src="js/script.js"></script>
+
+<!-- Mega Menu JS (hover dropdowns) -->
+<script src="js/mega-menu.js"></script>
+
+</body>
+</html>
