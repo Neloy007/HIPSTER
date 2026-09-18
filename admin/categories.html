@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Categories | HIPSTER Admin</title>
+
+    <!-- Admin CSS -->
+    <link rel="stylesheet" href="css/admin.css">
+
+    <!-- Categories CSS -->
+    <link rel="stylesheet" href="css/categories.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         ADMIN LAYOUT
+    ====================================================== -->
+
+    <div class="admin-layout">
+
+
+        <!-- =================================================
+             SIDEBAR
+        ================================================== -->
+
+        <aside class="sidebar">
+
+
+            <!-- Logo -->
+
+            <div class="sidebar-logo">
+
+                <a href="index.html">
+                    HIPSTER
+                </a>
+
+                <span>
+                    ADMIN
+                </span>
+
+            </div>
+
+
+            <!-- Navigation -->
+
+            <nav class="sidebar-nav">
+
+
+                <!-- Main -->
+
+                <div class="nav-section">
+
+                    <p class="nav-title">
+                        MAIN
+                    </p>
+
+
+                    <a
+                        href="index.html"
+                        class="nav-link"
+                    >
+
+                        <span class="nav-icon">
+                            ⌂
+                        </span>
+
+                        <span>
+                            Dashboard
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        href="products.html"
+                        class="nav-link"
+                    >
+
+                        <span class="nav-icon">
+                            ▦
+                        </span>
+
+                        <span>
+                            Products
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        href="categories.html"
+                        class="nav-link active"
+                    >
+
+                        <span class="nav-icon">
+                            ☷
+                        </span>
+
+                        <span>
+                            Categories
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        href="orders.html"
+                        class="nav-link"
+                    >
+
+                        <span class="nav-icon">
+                            □
+                        </span>
+
+                        <span>
+                            Orders
+                        </span>
+
+                    </a>
+
+                </div>
+
+
+                <!-- Customers -->
+
+                <div class="nav-section">
+
+                    <p class="nav-title">
+                        CUSTOMERS
+                    </p>
+
+
+                    <a
+                        href="customers.html"
+                        class="nav-link"
+                    >
+
+                        <span class="nav-icon">
+                            ♙
+                        </span>
+
+                        <span>
+                            Customers
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        href="reviews.html"
+                        class="nav-link"
+                    >
+
+                        <span class="nav-icon">
+                            ☆
+                        </span>
+
+                        <span>
+                            Reviews
+                        </span>
+
+                    </a>
+
+                </div>
+
+
+                <!-- Management -->
+
+                <div class="nav-section">
+
+                    <p class="nav-title">
+                        MANAGEMENT
+                    </p>
+
+
+                    <a
+                        href="inventory.html"
+                        class="nav-link"
+                    >
+
+                        <span class="nav-icon">
+                            ▤
+                        </span>
+
+                        <span>
+                            Inventory
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        href="discounts.html"
+                        class="nav-link"
+                    >
+
+                        <span class="nav-icon">
+                            %
+                        </span>
+
+                        <span>
+                            Discounts
+                        </span>
+
+                    </a>
+
+                </div>
+
+
+                <!-- System -->
+
+                <div class="nav-section">
+
+                    <p class="nav-title">
+                        SYSTEM
+                    </p>
+
+
+                    <a
+                        href="settings.html"
+                        class="nav-link"
+                    >
+
+                        <span class="nav-icon">
+                            ⚙
+                        </span>
+
+                        <span>
+                            Settings
+                        </span>
+
+                    </a>
+
+                </div>
+
+
+            </nav>
+
+
+            <!-- Sidebar Bottom -->
+
+            <div class="sidebar-bottom">
+
+
+                <a
+                    href="../frontend/index.html"
+                    class="store-link"
+                >
+
+                    <span>
+                        ↗
+                    </span>
+
+                    View Store
+
+                </a>
+
+
+                <button
+                    type="button"
+                    class="logout-button"
+                    id="logoutButton"
+                >
+
+                    <span>
+                        ⇥
+                    </span>
+
+                    Logout
+
+                </button>
+
+
+            </div>
+
+
+        </aside>
+
+
+
+        <!-- =================================================
+             MAIN CONTENT
+        ================================================== -->
+
+        <main class="main-content">
+
+
+            <!-- =================================================
+                 HEADER
+            ================================================== -->
+
+            <header class="admin-header">
+
+
+                <div class="header-left">
+
+
+                    <button
+                        type="button"
+                        class="menu-button"
+                        id="menuButton"
+                        aria-label="Open menu"
+                    >
+                        ☰
+                    </button>
+
+
+                    <div>
+
+                        <h1>
+                            Categories
+                        </h1>
+
+                        <p>
+                            Manage your store categories.
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="header-right">
+
+
+                    <!-- Search -->
+
+                    <div class="admin-search">
+
+                        <span>
+                            ⌕
+                        </span>
+
+                        <input
+                            type="search"
+                            id="adminSearch"
+                            placeholder="Search..."
+                        >
+
+                    </div>
+
+
+                    <!-- Notifications -->
+
+                    <button
+                        type="button"
+                        class="header-button"
+                        aria-label="Notifications"
+                    >
+
+                        ♢
+
+                        <span class="notification-dot"></span>
+
+                    </button>
+
+
+                    <!-- Profile -->
+
+                    <button
+                        type="button"
+                        class="admin-profile"
+                        id="profileButton"
+                    >
+
+                        <span class="profile-avatar">
+                            N
+                        </span>
+
+
+                        <span class="profile-info">
+
+                            <strong>
+                                Admin
+                            </strong>
+
+                            <small>
+                                Administrator
+                            </small>
+
+                        </span>
+
+
+                        <span class="profile-arrow">
+                            ▾
+                        </span>
+
+                    </button>
+
+
+                </div>
+
+
+            </header>
+
+
+
+            <!-- =================================================
+                 CATEGORY CONTENT
+            ================================================== -->
+
+            <section class="dashboard-content category-content">
+
+
+                <!-- =================================================
+                     PAGE HEADER
+                ================================================== -->
+
+                <div class="page-header">
+
+
+                    <div class="page-header-text">
+
+                        <h2>
+                            Store Categories
+                        </h2>
+
+                        <p>
+                            Create and manage categories for your
+                            HIPSTER products.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="primary-button"
+                        id="addCategoryButton"
+                    >
+
+                        <span>
+                            +
+                        </span>
+
+                        Add Category
+
+                    </button>
+
+
+                </div>
+
+
+
+                <!-- =================================================
+                     CATEGORY SUMMARY
+                ================================================== -->
+
+                <div class="category-summary">
+
+
+                    <!-- Total Categories -->
+
+                    <div class="category-summary-card">
+
+                        <div class="summary-icon">
+                            #
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Total Categories
+                            </span>
+
+                            <strong id="totalCategories">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Active -->
+
+                    <div class="category-summary-card">
+
+                        <div class="summary-icon">
+                            ✓
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Active
+                            </span>
+
+                            <strong id="activeCategories">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Inactive -->
+
+                    <div class="category-summary-card">
+
+                        <div class="summary-icon">
+                            —
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Inactive
+                            </span>
+
+                            <strong id="inactiveCategories">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- =================================================
+                     CATEGORY TABLE CARD
+                ================================================== -->
+
+                <div class="dashboard-card categories-card">
+
+
+                    <!-- Table Header -->
+
+                    <div class="categories-toolbar">
+
+
+                        <div class="toolbar-title">
+
+                            <h2>
+                                All Categories
+                            </h2>
+
+                            <p>
+                                Manage your product categories.
+                            </p>
+
+                        </div>
+
+
+                        <!-- Search -->
+
+                        <div class="category-search">
+
+                            <span>
+                                ⌕
+                            </span>
+
+                            <input
+                                type="search"
+                                id="categorySearch"
+                                placeholder="Search categories..."
+                            >
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         TABLE
+                    ================================================== -->
+
+                    <div class="table-wrapper category-table-wrapper">
+
+                        <table class="category-table">
+
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>
+                                        CATEGORY
+                                    </th>
+
+                                    <th>
+                                        SLUG
+                                    </th>
+
+                                    <th>
+                                        DESCRIPTION
+                                    </th>
+
+                                    <th>
+                                        STATUS
+                                    </th>
+
+                                    <th>
+                                        CREATED
+                                    </th>
+
+                                    <th>
+                                        ACTIONS
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="categoryTableBody">
+
+
+                                <!-- =================================================
+                                     TEMPORARY DEMO ROWS
+
+                                     These will later be replaced
+                                     automatically with MongoDB data.
+                                ================================================== -->
+
+
+                                <tr class="category-row">
+
+
+                                    <!-- Category -->
+
+                                    <td>
+
+                                        <div class="category-name">
+
+                                            <span class="category-avatar">
+                                                M
+                                            </span>
+
+                                            <div>
+
+                                                <strong>
+                                                    Men
+                                                </strong>
+
+                                                <small>
+                                                    Main category
+                                                </small>
+
+                                            </div>
+
+                                        </div>
+
+                                    </td>
+
+
+                                    <!-- Slug -->
+
+                                    <td>
+
+                                        <code>
+                                            men
+                                        </code>
+
+                                    </td>
+
+
+                                    <!-- Description -->
+
+                                    <td>
+
+                                        <span class="category-description">
+                                            Men's clothing and fashion.
+                                        </span>
+
+                                    </td>
+
+
+                                    <!-- Status -->
+
+                                    <td>
+
+                                        <span class="status-badge active">
+                                            Active
+                                        </span>
+
+                                    </td>
+
+
+                                    <!-- Created -->
+
+                                    <td>
+
+                                        <span class="created-date">
+                                            Sep 18, 2026
+                                        </span>
+
+                                    </td>
+
+
+                                    <!-- Actions -->
+
+                                    <td>
+
+                                        <div class="category-actions">
+
+
+                                            <button
+                                                type="button"
+                                                class="table-action edit"
+                                                data-action="edit"
+                                            >
+                                                Edit
+                                            </button>
+
+
+                                            <button
+                                                type="button"
+                                                class="table-action delete"
+                                                data-action="delete"
+                                            >
+                                                Delete
+                                            </button>
+
+
+                                        </div>
+
+                                    </td>
+
+
+                                </tr>
+
+
+
+                                <tr class="category-row">
+
+
+                                    <td>
+
+                                        <div class="category-name">
+
+                                            <span class="category-avatar">
+                                                W
+                                            </span>
+
+                                            <div>
+
+                                                <strong>
+                                                    Women
+                                                </strong>
+
+                                                <small>
+                                                    Main category
+                                                </small>
+
+                                            </div>
+
+                                        </div>
+
+                                    </td>
+
+
+                                    <td>
+
+                                        <code>
+                                            women
+                                        </code>
+
+                                    </td>
+
+
+                                    <td>
+
+                                        <span class="category-description">
+                                            Women's clothing and fashion.
+                                        </span>
+
+                                    </td>
+
+
+                                    <td>
+
+                                        <span class="status-badge active">
+                                            Active
+                                        </span>
+
+                                    </td>
+
+
+                                    <td>
+
+                                        <span class="created-date">
+                                            Sep 18, 2026
+                                        </span>
+
+                                    </td>
+
+
+                                    <td>
+
+                                        <div class="category-actions">
+
+                                            <button
+                                                type="button"
+                                                class="table-action edit"
+                                                data-action="edit"
+                                            >
+                                                Edit
+                                            </button>
+
+                                            <button
+                                                type="button"
+                                                class="table-action delete"
+                                                data-action="delete"
+                                            >
+                                                Delete
+                                            </button>
+
+                                        </div>
+
+                                    </td>
+
+
+                                </tr>
+
+
+
+                                <tr class="category-row">
+
+
+                                    <td>
+
+                                        <div class="category-name">
+
+                                            <span class="category-avatar">
+                                                T
+                                            </span>
+
+                                            <div>
+
+                                                <strong>
+                                                    T-Shirts
+                                                </strong>
+
+                                                <small>
+                                                    Clothing
+                                                </small>
+
+                                            </div>
+
+                                        </div>
+
+                                    </td>
+
+
+                                    <td>
+
+                                        <code>
+                                            t-shirts
+                                        </code>
+
+                                    </td>
+
+
+                                    <td>
+
+                                        <span class="category-description">
+                                            Everyday T-shirts and tops.
+                                        </span>
+
+                                    </td>
+
+
+                                    <td>
+
+                                        <span class="status-badge active">
+                                            Active
+                                        </span>
+
+                                    </td>
+
+
+                                    <td>
+
+                                        <span class="created-date">
+                                            Sep 18, 2026
+                                        </span>
+
+                                    </td>
+
+
+                                    <td>
+
+                                        <div class="category-actions">
+
+                                            <button
+                                                type="button"
+                                                class="table-action edit"
+                                                data-action="edit"
+                                            >
+                                                Edit
+                                            </button>
+
+                                            <button
+                                                type="button"
+                                                class="table-action delete"
+                                                data-action="delete"
+                                            >
+                                                Delete
+                                            </button>
+
+                                        </div>
+
+                                    </td>
+
+
+                                </tr>
+
+
+
+                                <tr class="category-row">
+
+
+                                    <td>
+
+                                        <div class="category-name">
+
+                                            <span class="category-avatar">
+                                                J
+                                            </span>
+
+                                            <div>
+
+                                                <strong>
+                                                    Jeans
+                                                </strong>
+
+                                                <small>
+                                                    Clothing
+                                                </small>
+
+                                            </div>
+
+                                        </div>
+
+                                    </td>
+
+
+                                    <td>
+
+                                        <code>
+                                            jeans
+                                        </code>
+
+                                    </td>
+
+
+                                    <td>
+
+                                        <span class="category-description">
+                                            Denim jeans and trousers.
+                                        </span>
+
+                                    </td>
+
+
+                                    <td>
+
+                                        <span class="status-badge active">
+                                            Active
+                                        </span>
+
+                                    </td>
+
+
+                                    <td>
+
+                                        <span class="created-date">
+                                            Sep 18, 2026
+                                        </span>
+
+                                    </td>
+
+
+                                    <td>
+
+                                        <div class="category-actions">
+
+                                            <button
+                                                type="button"
+                                                class="table-action edit"
+                                                data-action="edit"
+                                            >
+                                                Edit
+                                            </button>
+
+                                            <button
+                                                type="button"
+                                                class="table-action delete"
+                                                data-action="delete"
+                                            >
+                                                Delete
+                                            </button>
+
+                                        </div>
+
+                                    </td>
+
+
+                                </tr>
+
+
+                            </tbody>
+
+
+                        </table>
+
+
+                        <!-- =================================================
+                             EMPTY STATE
+                        ================================================== -->
+
+                        <div
+                            class="empty-category-state"
+                            id="emptyCategoryState"
+                            hidden
+                        >
+
+                            <div class="empty-icon">
+                                □
+                            </div>
+
+                            <h3>
+                                No categories found
+                            </h3>
+
+                            <p>
+                                Create your first category to get started.
+                            </p>
+
+                            <button
+                                type="button"
+                                class="primary-button"
+                                id="emptyAddCategoryButton"
+                            >
+                                + Add Category
+                            </button>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         TABLE FOOTER
+                    ================================================== -->
+
+                    <div class="table-footer">
+
+
+                        <span id="categoryCountText">
+                            Showing 4 categories
+                        </span>
+
+
+                        <div class="pagination">
+
+                            <button
+                                type="button"
+                                class="pagination-button disabled"
+                                disabled
+                            >
+                                ‹
+                            </button>
+
+                            <button
+                                type="button"
+                                class="pagination-button current"
+                            >
+                                1
+                            </button>
+
+                            <button
+                                type="button"
+                                class="pagination-button disabled"
+                                disabled
+                            >
+                                ›
+                            </button>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+        </main>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         ADD / EDIT CATEGORY MODAL
+    ====================================================== -->
+
+    <div
+        class="modal-overlay"
+        id="categoryModal"
+        hidden
+    >
+
+
+        <div
+            class="category-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="categoryModalTitle"
+        >
+
+
+            <!-- Modal Header -->
+
+            <div class="modal-header">
+
+
+                <div>
+
+                    <h2 id="categoryModalTitle">
+                        Add Category
+                    </h2>
+
+                    <p id="categoryModalDescription">
+                        Create a new store category.
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="modal-close"
+                    id="closeCategoryModal"
+                    aria-label="Close modal"
+                >
+                    ×
+                </button>
+
+
+            </div>
+
+
+
+            <!-- Modal Form -->
+
+            <form id="categoryForm">
+
+
+                <!-- Hidden ID -->
+
+                <input
+                    type="hidden"
+                    id="categoryId"
+                >
+
+
+                <!-- Name -->
+
+                <div class="form-group">
+
+                    <label for="categoryName">
+                        Category Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="categoryName"
+                        name="name"
+                        placeholder="e.g. Hoodies"
+                        maxlength="50"
+                        required
+                    >
+
+                    <small>
+                        Category names should be clear and unique.
+                    </small>
+
+                </div>
+
+
+
+                <!-- Description -->
+
+                <div class="form-group">
+
+                    <label for="categoryDescription">
+                        Description
+                    </label>
+
+                    <textarea
+                        id="categoryDescription"
+                        name="description"
+                        rows="4"
+                        maxlength="300"
+                        placeholder="Describe this category..."
+                    ></textarea>
+
+                    <small>
+                        Maximum 300 characters.
+                    </small>
+
+                </div>
+
+
+
+                <!-- Status -->
+
+                <div
+                    class="form-group status-form-group"
+                    id="categoryStatusGroup"
+                    hidden
+                >
+
+                    <label for="categoryStatus">
+                        Status
+                    </label>
+
+                    <select
+                        id="categoryStatus"
+                        name="isActive"
+                    >
+
+                        <option value="true">
+                            Active
+                        </option>
+
+                        <option value="false">
+                            Inactive
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- Form Error -->
+
+                <div
+                    class="form-error"
+                    id="categoryFormError"
+                    hidden
+                >
+                </div>
+
+
+
+                <!-- Modal Footer -->
+
+                <div class="modal-footer">
+
+
+                    <button
+                        type="button"
+                        class="secondary-button"
+                        id="cancelCategoryButton"
+                    >
+                        Cancel
+                    </button>
+
+
+                    <button
+                        type="submit"
+                        class="primary-button"
+                        id="saveCategoryButton"
+                    >
+
+                        <span id="saveCategoryButtonText">
+                            Create Category
+                        </span>
+
+                    </button>
+
+
+                </div>
+
+
+            </form>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         DELETE CONFIRMATION MODAL
+    ====================================================== -->
+
+    <div
+        class="modal-overlay"
+        id="deleteModal"
+        hidden
+    >
+
+
+        <div
+            class="confirm-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="deleteModalTitle"
+        >
+
+
+            <div class="confirm-icon">
+                !
+            </div>
+
+
+            <h2 id="deleteModalTitle">
+                Delete Category?
+            </h2>
+
+
+            <p id="deleteModalMessage">
+                This category will be deactivated.
+                Products using it will not be deleted.
+            </p>
+
+
+            <div class="confirm-actions">
+
+
+                <button
+                    type="button"
+                    class="secondary-button"
+                    id="cancelDeleteButton"
+                >
+                    Cancel
+                </button>
+
+
+                <button
+                    type="button"
+                    class="danger-button"
+                    id="confirmDeleteButton"
+                >
+                    Delete Category
+                </button>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="js/admin.js"></script>
+
+    <script src="js/categories.js"></script>
+
+
+</body>
+</html>

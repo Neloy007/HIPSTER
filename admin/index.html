@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>HIPSTER Admin Dashboard</title>
+
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body>
+
+    <!-- =========================================
+         ADMIN LAYOUT
+    ========================================== -->
+
+    <div class="admin-layout">
+
+
+        <!-- =====================================
+             SIDEBAR
+        ====================================== -->
+
+        <aside class="sidebar">
+
+            <!-- Logo -->
+
+            <div class="sidebar-logo">
+                <a href="index.html">HIPSTER</a>
+                <span>ADMIN</span>
+            </div>
+
+
+            <!-- Navigation -->
+
+            <nav class="sidebar-nav">
+
+                <div class="nav-section">
+
+                    <p class="nav-title">MAIN</p>
+
+                    <a href="index.html" class="nav-link active">
+                        <span class="nav-icon">⌂</span>
+                        <span>Dashboard</span>
+                    </a>
+
+                    <a href="products.html" class="nav-link">
+                        <span class="nav-icon">▦</span>
+                        <span>Products</span>
+                    </a>
+
+                    <a href="categories.html" class="nav-link">
+                        <span class="nav-icon">☷</span>
+                        <span>Categories</span>
+                    </a>
+
+                    <a href="orders.html" class="nav-link">
+                        <span class="nav-icon">□</span>
+                        <span>Orders</span>
+                    </a>
+
+                </div>
+
+
+                <div class="nav-section">
+
+                    <p class="nav-title">CUSTOMERS</p>
+
+                    <a href="customers.html" class="nav-link">
+                        <span class="nav-icon">♙</span>
+                        <span>Customers</span>
+                    </a>
+
+                    <a href="reviews.html" class="nav-link">
+                        <span class="nav-icon">☆</span>
+                        <span>Reviews</span>
+                    </a>
+
+                </div>
+
+
+                <div class="nav-section">
+
+                    <p class="nav-title">MANAGEMENT</p>
+
+                    <a href="inventory.html" class="nav-link">
+                        <span class="nav-icon">▤</span>
+                        <span>Inventory</span>
+                    </a>
+
+                    <a href="discounts.html" class="nav-link">
+                        <span class="nav-icon">%</span>
+                        <span>Discounts</span>
+                    </a>
+
+                </div>
+
+
+                <div class="nav-section">
+
+                    <p class="nav-title">SYSTEM</p>
+
+                    <a href="settings.html" class="nav-link">
+                        <span class="nav-icon">⚙</span>
+                        <span>Settings</span>
+                    </a>
+
+                </div>
+
+            </nav>
+
+
+            <!-- Sidebar Bottom -->
+
+            <div class="sidebar-bottom">
+
+                <a href="../frontend/index.html" class="store-link">
+                    <span>↗</span>
+                    View Store
+                </a>
+
+                <button
+                    type="button"
+                    class="logout-button"
+                    id="logoutButton"
+                >
+                    <span>⇥</span>
+                    Logout
+                </button>
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- =====================================
+             MAIN AREA
+        ====================================== -->
+
+        <main class="main-content">
+
+
+            <!-- =================================
+                 TOP HEADER
+            ================================== -->
+
+            <header class="admin-header">
+
+                <div class="header-left">
+
+                    <button
+                        type="button"
+                        class="menu-button"
+                        id="menuButton"
+                        aria-label="Open menu"
+                    >
+                        ☰
+                    </button>
+
+                    <div>
+
+                        <h1>Dashboard</h1>
+
+                        <p>
+                            Welcome back to your HIPSTER store.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="header-right">
+
+                    <!-- Search -->
+
+                    <div class="admin-search">
+
+                        <span>⌕</span>
+
+                        <input
+                            type="search"
+                            placeholder="Search..."
+                            id="adminSearch"
+                        >
+
+                    </div>
+
+
+                    <!-- Notifications -->
+
+                    <button
+                        type="button"
+                        class="header-button"
+                        aria-label="Notifications"
+                    >
+                        ♢
+                        <span class="notification-dot"></span>
+                    </button>
+
+
+                    <!-- Admin Profile -->
+
+                    <button
+                        type="button"
+                        class="admin-profile"
+                        id="profileButton"
+                    >
+
+                        <span class="profile-avatar">
+                            N
+                        </span>
+
+                        <span class="profile-info">
+
+                            <strong>Admin</strong>
+
+                            <small>Administrator</small>
+
+                        </span>
+
+                        <span class="profile-arrow">
+                            ▾
+                        </span>
+
+                    </button>
+
+                </div>
+
+            </header>
+
+
+
+            <!-- =================================
+                 DASHBOARD CONTENT
+            ================================== -->
+
+            <section class="dashboard-content">
+
+
+                <!-- =================================
+                     STAT CARDS
+                ================================== -->
+
+                <div class="stats-grid">
+
+
+                    <!-- Revenue -->
+
+                    <div class="stat-card">
+
+                        <div class="stat-card-top">
+
+                            <span class="stat-label">
+                                TOTAL REVENUE
+                            </span>
+
+                            <span class="stat-icon">
+                                $
+                            </span>
+
+                        </div>
+
+                        <div class="stat-value">
+                            $24,680
+                        </div>
+
+                        <div class="stat-footer">
+
+                            <span class="positive">
+                                +12.5%
+                            </span>
+
+                            <span>
+                                vs last month
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Orders -->
+
+                    <div class="stat-card">
+
+                        <div class="stat-card-top">
+
+                            <span class="stat-label">
+                                TOTAL ORDERS
+                            </span>
+
+                            <span class="stat-icon">
+                                □
+                            </span>
+
+                        </div>
+
+                        <div class="stat-value">
+                            1,248
+                        </div>
+
+                        <div class="stat-footer">
+
+                            <span class="positive">
+                                +8.2%
+                            </span>
+
+                            <span>
+                                vs last month
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Products -->
+
+                    <div class="stat-card">
+
+                        <div class="stat-card-top">
+
+                            <span class="stat-label">
+                                PRODUCTS
+                            </span>
+
+                            <span class="stat-icon">
+                                ▦
+                            </span>
+
+                        </div>
+
+                        <div class="stat-value">
+                            342
+                        </div>
+
+                        <div class="stat-footer">
+
+                            <span class="positive">
+                                +18
+                            </span>
+
+                            <span>
+                                this month
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Customers -->
+
+                    <div class="stat-card">
+
+                        <div class="stat-card-top">
+
+                            <span class="stat-label">
+                                CUSTOMERS
+                            </span>
+
+                            <span class="stat-icon">
+                                ♙
+                            </span>
+
+                        </div>
+
+                        <div class="stat-value">
+                            8,492
+                        </div>
+
+                        <div class="stat-footer">
+
+                            <span class="positive">
+                                +15.4%
+                            </span>
+
+                            <span>
+                                vs last month
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================
+                     MAIN DASHBOARD GRID
+                ================================== -->
+
+                <div class="dashboard-grid">
+
+
+                    <!-- =================================
+                         SALES OVERVIEW
+                    ================================== -->
+
+                    <div class="dashboard-card sales-card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <h2>Sales Overview</h2>
+
+                                <p>
+                                    Revenue performance
+                                </p>
+
+                            </div>
+
+
+                            <select id="salesPeriod">
+
+                                <option value="7">
+                                    Last 7 days
+                                </option>
+
+                                <option value="30" selected>
+                                    Last 30 days
+                                </option>
+
+                                <option value="90">
+                                    Last 90 days
+                                </option>
+
+                                <option value="365">
+                                    This year
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- Chart Placeholder -->
+
+                        <div class="chart-container">
+
+                            <div class="chart-y-axis">
+
+                                <span>$10k</span>
+                                <span>$7.5k</span>
+                                <span>$5k</span>
+                                <span>$2.5k</span>
+                                <span>$0</span>
+
+                            </div>
+
+
+                            <div class="chart-area">
+
+                                <div class="chart-grid-line"></div>
+                                <div class="chart-grid-line"></div>
+                                <div class="chart-grid-line"></div>
+                                <div class="chart-grid-line"></div>
+                                <div class="chart-grid-line"></div>
+
+
+                                <div class="chart-bars">
+
+                                    <div class="chart-bar" style="height: 45%;">
+                                        <span>$2.8k</span>
+                                    </div>
+
+                                    <div class="chart-bar" style="height: 62%;">
+                                        <span>$4.1k</span>
+                                    </div>
+
+                                    <div class="chart-bar" style="height: 51%;">
+                                        <span>$3.4k</span>
+                                    </div>
+
+                                    <div class="chart-bar" style="height: 74%;">
+                                        <span>$5.2k</span>
+                                    </div>
+
+                                    <div class="chart-bar" style="height: 68%;">
+                                        <span>$4.8k</span>
+                                    </div>
+
+                                    <div class="chart-bar" style="height: 86%;">
+                                        <span>$6.4k</span>
+                                    </div>
+
+                                    <div class="chart-bar" style="height: 78%;">
+                                        <span>$5.7k</span>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =================================
+                         ORDER STATUS
+                    ================================== -->
+
+                    <div class="dashboard-card order-status-card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <h2>Order Status</h2>
+
+                                <p>
+                                    Current orders
+                                </p>
+
+                            </div>
+
+                            <a href="orders.html">
+                                View all
+                            </a>
+
+                        </div>
+
+
+                        <div class="order-status-list">
+
+
+                            <div class="status-row">
+
+                                <div class="status-info">
+
+                                    <span class="status-dot pending"></span>
+
+                                    <span>
+                                        Pending
+                                    </span>
+
+                                </div>
+
+                                <strong>
+                                    42
+                                </strong>
+
+                            </div>
+
+
+                            <div class="status-row">
+
+                                <div class="status-info">
+
+                                    <span class="status-dot processing"></span>
+
+                                    <span>
+                                        Processing
+                                    </span>
+
+                                </div>
+
+                                <strong>
+                                    68
+                                </strong>
+
+                            </div>
+
+
+                            <div class="status-row">
+
+                                <div class="status-info">
+
+                                    <span class="status-dot shipped"></span>
+
+                                    <span>
+                                        Shipped
+                                    </span>
+
+                                </div>
+
+                                <strong>
+                                    91
+                                </strong>
+
+                            </div>
+
+
+                            <div class="status-row">
+
+                                <div class="status-info">
+
+                                    <span class="status-dot delivered"></span>
+
+                                    <span>
+                                        Delivered
+                                    </span>
+
+                                </div>
+
+                                <strong>
+                                    1,047
+                                </strong>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================
+                     LOWER DASHBOARD GRID
+                ================================== -->
+
+                <div class="dashboard-grid lower-grid">
+
+
+                    <!-- =================================
+                         RECENT ORDERS
+                    ================================== -->
+
+                    <div class="dashboard-card recent-orders-card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <h2>Recent Orders</h2>
+
+                                <p>
+                                    Latest customer orders
+                                </p>
+
+                            </div>
+
+                            <a href="orders.html">
+                                View all orders
+                            </a>
+
+                        </div>
+
+
+                        <div class="table-wrapper">
+
+                            <table>
+
+                                <thead>
+
+                                    <tr>
+
+                                        <th>
+                                            ORDER
+                                        </th>
+
+                                        <th>
+                                            CUSTOMER
+                                        </th>
+
+                                        <th>
+                                            DATE
+                                        </th>
+
+                                        <th>
+                                            TOTAL
+                                        </th>
+
+                                        <th>
+                                            STATUS
+                                        </th>
+
+                                    </tr>
+
+                                </thead>
+
+
+                                <tbody>
+
+                                    <tr>
+
+                                        <td>
+                                            <strong>#HP10248</strong>
+                                        </td>
+
+                                        <td>
+                                            James Wilson
+                                        </td>
+
+                                        <td>
+                                            Sep 18, 2026
+                                        </td>
+
+                                        <td>
+                                            $184.00
+                                        </td>
+
+                                        <td>
+                                            <span class="order-badge delivered">
+                                                Delivered
+                                            </span>
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr>
+
+                                        <td>
+                                            <strong>#HP10247</strong>
+                                        </td>
+
+                                        <td>
+                                            Olivia Brown
+                                        </td>
+
+                                        <td>
+                                            Sep 18, 2026
+                                        </td>
+
+                                        <td>
+                                            $96.50
+                                        </td>
+
+                                        <td>
+                                            <span class="order-badge processing">
+                                                Processing
+                                            </span>
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr>
+
+                                        <td>
+                                            <strong>#HP10246</strong>
+                                        </td>
+
+                                        <td>
+                                            Noah Davis
+                                        </td>
+
+                                        <td>
+                                            Sep 17, 2026
+                                        </td>
+
+                                        <td>
+                                            $245.00
+                                        </td>
+
+                                        <td>
+                                            <span class="order-badge shipped">
+                                                Shipped
+                                            </span>
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr>
+
+                                        <td>
+                                            <strong>#HP10245</strong>
+                                        </td>
+
+                                        <td>
+                                            Emma Miller
+                                        </td>
+
+                                        <td>
+                                            Sep 17, 2026
+                                        </td>
+
+                                        <td>
+                                            $72.00
+                                        </td>
+
+                                        <td>
+                                            <span class="order-badge pending">
+                                                Pending
+                                            </span>
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =================================
+                         TOP PRODUCTS
+                    ================================== -->
+
+                    <div class="dashboard-card top-products-card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <h2>Top Products</h2>
+
+                                <p>
+                                    Best selling products
+                                </p>
+
+                            </div>
+
+                            <a href="products.html">
+                                View all
+                            </a>
+
+                        </div>
+
+
+                        <div class="top-products-list">
+
+
+                            <div class="top-product">
+
+                                <div class="product-image">
+                                    <span>01</span>
+                                </div>
+
+                                <div class="product-info">
+
+                                    <strong>
+                                        Essential Oversized T-Shirt
+                                    </strong>
+
+                                    <small>
+                                        428 sold
+                                    </small>
+
+                                </div>
+
+                                <strong class="product-price">
+                                    $48
+                                </strong>
+
+                            </div>
+
+
+                            <div class="top-product">
+
+                                <div class="product-image">
+                                    <span>02</span>
+                                </div>
+
+                                <div class="product-info">
+
+                                    <strong>
+                                        Premium Football Jersey
+                                    </strong>
+
+                                    <small>
+                                        367 sold
+                                    </small>
+
+                                </div>
+
+                                <strong class="product-price">
+                                    $79
+                                </strong>
+
+                            </div>
+
+
+                            <div class="top-product">
+
+                                <div class="product-image">
+                                    <span>03</span>
+                                </div>
+
+                                <div class="product-info">
+
+                                    <strong>
+                                        Carpenter Jeans
+                                    </strong>
+
+                                    <small>
+                                        291 sold
+                                    </small>
+
+                                </div>
+
+                                <strong class="product-price">
+                                    $84
+                                </strong>
+
+                            </div>
+
+
+                            <div class="top-product">
+
+                                <div class="product-image">
+                                    <span>04</span>
+                                </div>
+
+                                <div class="product-info">
+
+                                    <strong>
+                                        Classic Cotton Shirt
+                                    </strong>
+
+                                    <small>
+                                        245 sold
+                                    </small>
+
+                                </div>
+
+                                <strong class="product-price">
+                                    $62
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================
+                     QUICK ACTIONS
+                ================================== -->
+
+                <div class="quick-actions">
+
+                    <h2>Quick Actions</h2>
+
+                    <div class="quick-action-grid">
+
+
+                        <a
+                            href="products.html"
+                            class="quick-action"
+                        >
+
+                            <span class="quick-action-icon">
+                                +
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Add Product
+                                </strong>
+
+                                <small>
+                                    Create a new product
+                                </small>
+
+                            </div>
+
+                        </a>
+
+
+                        <a
+                            href="categories.html"
+                            class="quick-action"
+                        >
+
+                            <span class="quick-action-icon">
+                                +
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Add Category
+                                </strong>
+
+                                <small>
+                                    Create a new category
+                                </small>
+
+                            </div>
+
+                        </a>
+
+
+                        <a
+                            href="orders.html"
+                            class="quick-action"
+                        >
+
+                            <span class="quick-action-icon">
+                                →
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Manage Orders
+                                </strong>
+
+                                <small>
+                                    Review customer orders
+                                </small>
+
+                            </div>
+
+                        </a>
+
+
+                        <a
+                            href="inventory.html"
+                            class="quick-action"
+                        >
+
+                            <span class="quick-action-icon">
+                                #
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Check Inventory
+                                </strong>
+
+                                <small>
+                                    Review stock levels
+                                </small>
+
+                            </div>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script src="js/admin.js"></script>
+
+</body>
+</html>

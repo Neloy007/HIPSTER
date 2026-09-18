@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 import authRoutes from "./routes/authRoutes";
+import categoryRoutes from "./routes/categoryRoutes";
 
 const app = express();
 
@@ -24,5 +25,8 @@ app.get("/api/health", (_req, res) => {
 
 // Authentication routes
 app.use("/api/auth", authRoutes);
+
+// Category routes
+app.use("/api/categories", categoryRoutes);
 
 export default app;
