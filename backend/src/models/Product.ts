@@ -55,7 +55,10 @@ const productColorSchema = new Schema<IProductColor>(
       type: String,
       required: [true, "Color name is required"],
       trim: true,
-      maxlength: [30, "Color name cannot exceed 30 characters"],
+      maxlength: [
+        30,
+        "Color name cannot exceed 30 characters",
+      ],
     },
 
     hex: {
@@ -133,12 +136,18 @@ const productSchema = new Schema<IProduct>(
     price: {
       type: Number,
       required: [true, "Product price is required"],
-      min: [0, "Product price cannot be negative"],
+      min: [
+        0,
+        "Product price cannot be negative",
+      ],
     },
 
     compareAtPrice: {
       type: Number,
-      min: [0, "Compare-at price cannot be negative"],
+      min: [
+        0,
+        "Compare-at price cannot be negative",
+      ],
     },
 
     sku: {
@@ -147,14 +156,20 @@ const productSchema = new Schema<IProduct>(
       unique: true,
       uppercase: true,
       trim: true,
-      maxlength: [50, "SKU cannot exceed 50 characters"],
+      maxlength: [
+        50,
+        "Product SKU cannot exceed 50 characters",
+      ],
       index: true,
     },
 
     stock: {
       type: Number,
       required: [true, "Product stock is required"],
-      min: [0, "Product stock cannot be negative"],
+      min: [
+        0,
+        "Product stock cannot be negative",
+      ],
       default: 0,
     },
 
@@ -187,6 +202,62 @@ const productSchema = new Schema<IProduct>(
     timestamps: true,
   }
 );
+
+/* =========================================================
+   PRODUCT VALIDATION
+========================================================= */
+
+productSchema.pre("validate", function () {
+  if (
+    this.compareAtPrice !== undefined &&
+    this.compareAtPrice !== null &&
+    this.compareAtPrice <= this.price
+  ) {
+    this.invalidate(
+      "compareAtPrice",
+      "Compare-at price must be greater than the current price"
+    );
+  }
+});
+
+/* =========================================================
+   PRODUCT INDEXES
+========================================================= */
+
+/*
+   Search products by:
+   - name
+   - brand
+   - SKU
+*/
+productSchema.index({
+  name: "text",
+  brand: "text",
+  sku: "text",
+});
+
+/*
+   Category filtering
+*/
+productSchema.index({
+  category: 1,
+  isActive: 1,
+});
+
+/*
+   Featured products
+*/
+productSchema.index({
+  isFeatured: 1,
+  isActive: 1,
+});
+
+/*
+   Newest products
+*/
+productSchema.index({
+  createdAt: -1,
+});
 
 /* =========================================================
    PRODUCT MODEL

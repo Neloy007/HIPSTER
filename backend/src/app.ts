@@ -1,21 +1,31 @@
 import express from "express";
 import cors from "cors";
 import helmet from "helmet";
+
 import authRoutes from "./routes/authRoutes";
 import categoryRoutes from "./routes/categoryRoutes";
+import productRoutes from "./routes/productRoutes";
 
 const app = express();
 
-// Security middleware
+/* =========================================================
+   SECURITY MIDDLEWARE
+========================================================= */
+
 app.use(helmet());
 
-// Allow frontend applications to communicate with the API
 app.use(cors());
 
-// Parse JSON request bodies
+/* =========================================================
+   BODY PARSER
+========================================================= */
+
 app.use(express.json());
 
-// Health check
+/* =========================================================
+   HEALTH CHECK
+========================================================= */
+
 app.get("/api/health", (_req, res) => {
   res.status(200).json({
     success: true,
@@ -23,10 +33,22 @@ app.get("/api/health", (_req, res) => {
   });
 });
 
-// Authentication routes
+/* =========================================================
+   AUTHENTICATION ROUTES
+========================================================= */
+
 app.use("/api/auth", authRoutes);
 
-// Category routes
+/* =========================================================
+   CATEGORY ROUTES
+========================================================= */
+
 app.use("/api/categories", categoryRoutes);
+
+/* =========================================================
+   PRODUCT ROUTES
+========================================================= */
+
+app.use("/api/products", productRoutes);
 
 export default app;

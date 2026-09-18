@@ -228,6 +228,18 @@ export const getActiveProducts = async (): Promise<IProduct[]> => {
 };
 
 /* =========================================================
+   GET ALL PRODUCTS FOR ADMIN
+========================================================= */
+
+export const getAllProductsForAdmin = async (): Promise<IProduct[]> => {
+  return Product.find({})
+    .populate("category", "name slug")
+    .sort({
+      createdAt: -1,
+    });
+};
+
+/* =========================================================
    GET PRODUCT BY SLUG
 ========================================================= */
 
