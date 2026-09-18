@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>HIPSTER | Admin Login</title>
+
+    <link
+        rel="stylesheet"
+        href="css/admin-login.css"
+    >
+
+</head>
+
+<body>
+
+    <!-- =====================================================
+         LOGIN PAGE
+    ====================================================== -->
+
+    <main class="login-page">
+
+        <div class="login-container">
+
+            <!-- =================================================
+                 BRAND
+            ================================================== -->
+
+            <div class="login-brand">
+
+                <div class="brand-logo">
+                    HIPSTER
+                </div>
+
+                <p class="brand-subtitle">
+                    ADMIN PANEL
+                </p>
+
+            </div>
+
+
+            <!-- =================================================
+                 LOGIN CARD
+            ================================================== -->
+
+            <section class="login-card">
+
+                <div class="login-heading">
+
+                    <h1>
+                        Welcome back
+                    </h1>
+
+                    <p>
+                        Sign in to manage your HIPSTER store.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     LOGIN ERROR
+                ================================================== -->
+
+                <div
+                    class="login-message error-message"
+                    id="loginError"
+                    role="alert"
+                    aria-live="polite"
+                ></div>
+
+
+                <!-- =================================================
+                     LOGIN SUCCESS
+                ================================================== -->
+
+                <div
+                    class="login-message success-message"
+                    id="loginSuccess"
+                    role="status"
+                    aria-live="polite"
+                ></div>
+
+
+                <!-- =================================================
+                     LOGIN FORM
+                ================================================== -->
+
+                <form
+                    id="adminLoginForm"
+                    novalidate
+                >
+
+                    <!-- EMAIL -->
+
+                    <div class="form-group">
+
+                        <label
+                            for="email"
+                        >
+                            Email address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter your admin email"
+                            autocomplete="email"
+                            required
+                        >
+
+                        <small
+                            class="field-error"
+                            id="emailError"
+                        ></small>
+
+                    </div>
+
+
+                    <!-- PASSWORD -->
+
+                    <div class="form-group">
+
+                        <div class="password-label-row">
+
+                            <label
+                                for="password"
+                            >
+                                Password
+                            </label>
+
+                        </div>
+
+                        <div class="password-input-wrapper">
+
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="Enter your password"
+                                autocomplete="current-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                id="passwordToggle"
+                                aria-label="Show password"
+                            >
+                                Show
+                            </button>
+
+                        </div>
+
+                        <small
+                            class="field-error"
+                            id="passwordError"
+                        ></small>
+
+                    </div>
+
+
+                    <!-- REMEMBER -->
+
+                    <div class="login-options">
+
+                        <label class="remember-option">
+
+                            <input
+                                type="checkbox"
+                                id="rememberAdmin"
+                            >
+
+                            <span>
+                                Remember me
+                            </span>
+
+                        </label>
+
+                    </div>
+
+
+                    <!-- LOGIN BUTTON -->
+
+                    <button
+                        type="submit"
+                        class="login-button"
+                        id="loginButton"
+                    >
+                        Sign in
+                    </button>
+
+                </form>
+
+
+                <!-- =================================================
+                     BACK TO STORE
+                ================================================== -->
+
+                <div class="back-to-store">
+
+                    <a
+                        href="../frontend/index.html"
+                    >
+                        ← Back to store
+                    </a>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 FOOTER
+            ================================================== -->
+
+            <footer class="login-footer">
+
+                <p>
+                    © 2026 HIPSTER. All rights reserved.
+                </p>
+
+            </footer>
+
+        </div>
+
+    </main>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="js/admin-login.js"></script>
+
+</body>
+
+</html>
