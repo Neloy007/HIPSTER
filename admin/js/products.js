@@ -788,8 +788,69 @@ async function loadCategories() {
 
 function populateCategorySelects() {
 
+    if (categoryFilter) {
 
-    /* Filter */
+        categoryFilter.innerHTML = `
+            <option value="">
+                All Categories
+            </option>
+        `;
+
+        categories.forEach(
+            (category) => {
+
+                const option =
+                    document.createElement("option");
+
+                option.value =
+                    category._id;
+
+                option.textContent =
+                    category.name;
+
+                categoryFilter.appendChild(
+                    option
+                );
+            }
+        );
+    }
+
+    if (productCategory) {
+
+        productCategory.innerHTML = `
+            <option value="">
+                Select category
+            </option>
+        `;
+
+        categories.forEach(
+            (category) => {
+
+                const option =
+                    document.createElement("option");
+
+                /*
+                 * IMPORTANT:
+                 * The value must be the MongoDB
+                 * Category ID.
+                 */
+                option.value =
+                    category._id;
+
+                option.textContent =
+                    category.name;
+
+                productCategory.appendChild(
+                    option
+                );
+            }
+        );
+    }
+}
+
+    /* =====================================================
+       FILTER CATEGORY SELECT
+    ===================================================== */
 
     if (categoryFilter) {
 
@@ -799,7 +860,6 @@ function populateCategorySelects() {
             </option>
         `;
 
-
         categories.forEach(
             (category) => {
 
@@ -808,14 +868,11 @@ function populateCategorySelects() {
                         "option"
                     );
 
-
                 option.value =
                     category._id;
 
-
                 option.textContent =
                     category.name;
-
 
                 categoryFilter.appendChild(
                     option
@@ -825,7 +882,9 @@ function populateCategorySelects() {
     }
 
 
-    /* Product form */
+    /* =====================================================
+       PRODUCT FORM CATEGORY SELECT
+    ===================================================== */
 
     if (productCategory) {
 
@@ -836,22 +895,84 @@ function populateCategorySelects() {
         `;
 
 
+        /*
+            Add temporary Men / Women
+            options first.
+        */
+
+        const menOption =
+            document.createElement(
+                "option"
+            );
+
+        menOption.value =
+            "men";
+
+        menOption.textContent =
+            "Men";
+
+        productCategory.appendChild(
+            menOption
+        );
+
+
+        const womenOption =
+            document.createElement(
+                "option"
+            );
+
+        womenOption.value =
+            "women";
+
+        womenOption.textContent =
+            "Women";
+
+        productCategory.appendChild(
+            womenOption
+        );
+
+
+        /*
+            Add real MongoDB categories
+            underneath the temporary
+            options.
+        */
+
         categories.forEach(
             (category) => {
+
+                /*
+                    Don't create duplicates
+                    if the backend already
+                    contains Men/Women.
+                */
+
+                const categoryName =
+                    String(
+                        category.name || ""
+                    )
+                        .trim()
+                        .toLowerCase();
+
+
+                if (
+                    categoryName === "men" ||
+                    categoryName === "women"
+                ) {
+                    return;
+                }
+
 
                 const option =
                     document.createElement(
                         "option"
                     );
 
-
                 option.value =
                     category._id;
 
-
                 option.textContent =
                     category.name;
-
 
                 productCategory.appendChild(
                     option
@@ -859,7 +980,7 @@ function populateCategorySelects() {
             }
         );
     }
-}
+
 
 
 /* =========================================================

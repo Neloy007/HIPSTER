@@ -3,111 +3,144 @@
    CATEGORY MANAGEMENT
 ========================================================= */
 
-const API_BASE_URL = "http://localhost:5000/api/categories";
+const API_BASE_URL =
+    "http://localhost:5000/api/categories";
+
 
 /* =========================================================
    DOM ELEMENTS
 ========================================================= */
 
-const categoriesTableBody = document.getElementById(
-  "categoriesTableBody"
-);
+const categoriesTableBody =
+    document.getElementById(
+        "categoryTableBody"
+    );
 
-const categorySearchInput = document.getElementById(
-  "categorySearch"
-);
+const categorySearchInput =
+    document.getElementById(
+        "categorySearch"
+    );
 
-const addCategoryButton = document.getElementById(
-  "addCategoryButton"
-);
+const addCategoryButton =
+    document.getElementById(
+        "addCategoryButton"
+    );
 
-const categoryModal = document.getElementById(
-  "categoryModal"
-);
+const emptyAddCategoryButton =
+    document.getElementById(
+        "emptyAddCategoryButton"
+    );
 
-const categoryModalTitle = document.getElementById(
-  "categoryModalTitle"
-);
+const categoryModal =
+    document.getElementById(
+        "categoryModal"
+    );
 
-const closeCategoryModalButton = document.getElementById(
-  "closeCategoryModal"
-);
+const categoryModalTitle =
+    document.getElementById(
+        "categoryModalTitle"
+    );
 
-const cancelCategoryButton = document.getElementById(
-  "cancelCategoryButton"
-);
+const categoryModalDescription =
+    document.getElementById(
+        "categoryModalDescription"
+    );
 
-const categoryForm = document.getElementById(
-  "categoryForm"
-);
+const closeCategoryModalButton =
+    document.getElementById(
+        "closeCategoryModal"
+    );
 
-const categoryIdInput = document.getElementById(
-  "categoryId"
-);
+const cancelCategoryButton =
+    document.getElementById(
+        "cancelCategoryButton"
+    );
 
-const categoryNameInput = document.getElementById(
-  "categoryName"
-);
+const categoryForm =
+    document.getElementById(
+        "categoryForm"
+    );
 
-const categoryDescriptionInput = document.getElementById(
-  "categoryDescription"
-);
+const categoryIdInput =
+    document.getElementById(
+        "categoryId"
+    );
 
-const categoryStatusGroup = document.getElementById(
-  "categoryStatusGroup"
-);
+const categoryNameInput =
+    document.getElementById(
+        "categoryName"
+    );
 
-const categoryStatusInput = document.getElementById(
-  "categoryStatus"
-);
+const categoryDescriptionInput =
+    document.getElementById(
+        "categoryDescription"
+    );
 
-const categoryFormError = document.getElementById(
-  "categoryFormError"
-);
+const categoryStatusGroup =
+    document.getElementById(
+        "categoryStatusGroup"
+    );
 
-const saveCategoryButton = document.getElementById(
-  "saveCategoryButton"
-);
+const categoryStatusInput =
+    document.getElementById(
+        "categoryStatus"
+    );
 
-const deleteModal = document.getElementById(
-  "deleteModal"
-);
+const categoryFormError =
+    document.getElementById(
+        "categoryFormError"
+    );
 
-const closeDeleteModalButton = document.getElementById(
-  "closeDeleteModal"
-);
+const saveCategoryButton =
+    document.getElementById(
+        "saveCategoryButton"
+    );
 
-const cancelDeleteButton = document.getElementById(
-  "cancelDeleteButton"
-);
+const saveCategoryButtonText =
+    document.getElementById(
+        "saveCategoryButtonText"
+    );
 
-const confirmDeleteButton = document.getElementById(
-  "confirmDeleteButton"
-);
+const deleteModal =
+    document.getElementById(
+        "deleteModal"
+    );
 
-const deleteCategoryName = document.getElementById(
-  "deleteCategoryName"
-);
+const cancelDeleteButton =
+    document.getElementById(
+        "cancelDeleteButton"
+    );
 
-const totalCategoriesElement = document.getElementById(
-  "totalCategories"
-);
+const confirmDeleteButton =
+    document.getElementById(
+        "confirmDeleteButton"
+    );
 
-const activeCategoriesElement = document.getElementById(
-  "activeCategories"
-);
+const totalCategoriesElement =
+    document.getElementById(
+        "totalCategories"
+    );
 
-const inactiveCategoriesElement = document.getElementById(
-  "inactiveCategories"
-);
+const activeCategoriesElement =
+    document.getElementById(
+        "activeCategories"
+    );
 
-const emptyState = document.getElementById(
-  "categoriesEmptyState"
-);
+const inactiveCategoriesElement =
+    document.getElementById(
+        "inactiveCategories"
+    );
 
-const tableWrapper = document.getElementById(
-  "categoriesTableWrapper"
-);
+const emptyState =
+    document.getElementById(
+        "emptyCategoryState"
+    );
+
+const tableWrapper =
+    document.querySelector(
+        ".category-table-wrapper"
+    );
+
 
 /* =========================================================
    STATE
@@ -117,1092 +150,1716 @@ let categories = [];
 
 let categoryToDelete = null;
 
+
 /* =========================================================
    AUTHENTICATION
 ========================================================= */
 
 const getAdminToken = () => {
-  return localStorage.getItem("hipsterAdminToken");
+
+    return localStorage.getItem(
+        "hipsterAdminToken"
+    );
 };
+
 
 /* =========================================================
    API HELPER
 ========================================================= */
 
-const apiRequest = async (url, options = {}) => {
-  const token = getAdminToken();
+const apiRequest = async (
+    url,
+    options = {}
+) => {
 
-  const headers = {
-    "Content-Type": "application/json",
-    ...(options.headers || {}),
-  };
+    const token =
+        getAdminToken();
 
-  /*
-    Add JWT only when it exists.
-    Public GET requests do not require it.
-  */
+    const headers = {
+        "Content-Type":
+            "application/json",
 
-  if (token) {
-    headers.Authorization = `Bearer ${token}`;
-  }
+        ...(options.headers || {}),
+    };
 
-  const response = await fetch(url, {
-    ...options,
-    headers,
-  });
 
-  let data = null;
+    /*
+        Protected API requests require
+        the admin JWT.
+    */
 
-  try {
-    data = await response.json();
-  } catch (error) {
-    data = null;
-  }
+    if (token) {
 
-  if (!response.ok) {
-    throw new Error(
-      data?.message || "Something went wrong"
-    );
-  }
+        headers.Authorization =
+            `Bearer ${token}`;
+    }
 
-  return data;
+
+    const response =
+        await fetch(
+            url,
+            {
+                ...options,
+                headers,
+            }
+        );
+
+
+    let data = null;
+
+
+    try {
+
+        data =
+            await response.json();
+
+    } catch (error) {
+
+        data = null;
+    }
+
+
+    if (!response.ok) {
+
+        throw new Error(
+            data?.message ||
+            `Request failed with status ${response.status}`
+        );
+    }
+
+
+    return data;
 };
+
 
 /* =========================================================
    LOAD CATEGORIES
 ========================================================= */
 
 const loadCategories = async () => {
-  try {
-    showLoadingState();
 
-    const response = await apiRequest(API_BASE_URL);
+    try {
 
-    categories = response?.data?.categories || [];
+        showLoadingState();
 
-    renderCategories(categories);
 
-    updateCategorySummary(categories);
-  } catch (error) {
-    console.error("Failed to load categories:", error);
+        const response =
+            await apiRequest(
+                API_BASE_URL
+            );
 
-    showTableError(
-      error.message || "Failed to load categories"
-    );
-  }
+
+        categories =
+            response?.data?.categories ||
+            [];
+
+
+        renderCategories(
+            categories
+        );
+
+
+        updateCategorySummary(
+            categories
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Failed to load categories:",
+            error
+        );
+
+
+        showTableError(
+            error.message ||
+            "Failed to load categories."
+        );
+    }
 };
+
 
 /* =========================================================
    RENDER CATEGORIES
 ========================================================= */
 
-const renderCategories = (categoryList) => {
-  if (!categoriesTableBody) {
-    return;
-  }
+const renderCategories = (
+    categoryList
+) => {
 
-  categoriesTableBody.innerHTML = "";
+    if (!categoriesTableBody) {
+        return;
+    }
 
-  if (categoryList.length === 0) {
-    showEmptyState();
-    return;
-  }
 
-  hideEmptyState();
+    categoriesTableBody.innerHTML = "";
 
-  categoryList.forEach((category) => {
-    const row = document.createElement("tr");
 
-    row.innerHTML = `
-      <td>
-        <div class="category-name-cell">
-          <strong>${escapeHtml(category.name)}</strong>
-        </div>
-      </td>
+    if (
+        !categoryList ||
+        categoryList.length === 0
+    ) {
 
-      <td>
-        <span class="category-slug">
-          ${escapeHtml(category.slug)}
-        </span>
-      </td>
+        showEmptyState();
 
-      <td>
-        <span class="category-description">
-          ${
-            category.description
-              ? escapeHtml(category.description)
-              : "No description"
-          }
-        </span>
-      </td>
+        return;
+    }
 
-      <td>
-        <span class="status-badge ${
-          category.isActive
-            ? "status-active"
-            : "status-inactive"
-        }">
-          ${
-            category.isActive
-              ? "Active"
-              : "Inactive"
-          }
-        </span>
-      </td>
 
-      <td>
-        <span class="category-date">
-          ${formatDate(category.createdAt)}
-        </span>
-      </td>
+    hideEmptyState();
 
-      <td>
-        <div class="category-actions">
 
-          <button
-            type="button"
-            class="table-action-button edit-button"
-            data-action="edit"
-            data-id="${category._id}"
-            aria-label="Edit ${escapeHtml(category.name)}"
-          >
-            Edit
-          </button>
+    categoryList.forEach(
+        (category) => {
 
-          <button
-            type="button"
-            class="table-action-button status-button"
-            data-action="status"
-            data-id="${category._id}"
-            aria-label="${
-              category.isActive
-                ? "Deactivate"
-                : "Activate"
-            } ${escapeHtml(category.name)}"
-          >
-            ${
-              category.isActive
-                ? "Deactivate"
-                : "Activate"
-            }
-          </button>
+            const row =
+                document.createElement(
+                    "tr"
+                );
 
-          <button
-            type="button"
-            class="table-action-button delete-button"
-            data-action="delete"
-            data-id="${category._id}"
-            aria-label="Delete ${escapeHtml(category.name)}"
-          >
-            Delete
-          </button>
 
-        </div>
-      </td>
-    `;
+            row.className =
+                "category-row";
 
-    categoriesTableBody.appendChild(row);
-  });
+
+            row.innerHTML = `
+                <td>
+
+                    <div class="category-name">
+
+                        <span class="category-avatar">
+                            ${escapeHtml(
+                                getCategoryInitial(
+                                    category.name
+                                )
+                            )}
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                ${escapeHtml(
+                                    category.name
+                                )}
+                            </strong>
+
+                            <small>
+                                Store category
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </td>
+
+
+                <td>
+
+                    <code>
+                        ${escapeHtml(
+                            category.slug
+                        )}
+                    </code>
+
+                </td>
+
+
+                <td>
+
+                    <span class="category-description">
+
+                        ${
+                            category.description
+                                ? escapeHtml(
+                                    category.description
+                                )
+                                : "No description"
+                        }
+
+                    </span>
+
+                </td>
+
+
+                <td>
+
+                    <span
+                        class="status-badge ${
+                            category.isActive
+                                ? "active"
+                                : "inactive"
+                        }"
+                    >
+                        ${
+                            category.isActive
+                                ? "Active"
+                                : "Inactive"
+                        }
+                    </span>
+
+                </td>
+
+
+                <td>
+
+                    <span class="created-date">
+
+                        ${formatDate(
+                            category.createdAt
+                        )}
+
+                    </span>
+
+                </td>
+
+
+                <td>
+
+                    <div class="category-actions">
+
+
+                        <button
+                            type="button"
+                            class="table-action edit"
+                            data-action="edit"
+                            data-id="${category._id}"
+                        >
+                            Edit
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="table-action status"
+                            data-action="status"
+                            data-id="${category._id}"
+                        >
+                            ${
+                                category.isActive
+                                    ? "Deactivate"
+                                    : "Activate"
+                            }
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="table-action delete"
+                            data-action="delete"
+                            data-id="${category._id}"
+                        >
+                            Delete
+                        </button>
+
+
+                    </div>
+
+                </td>
+            `;
+
+
+            categoriesTableBody.appendChild(
+                row
+            );
+        }
+    );
 };
+
 
 /* =========================================================
    SUMMARY
 ========================================================= */
 
-const updateCategorySummary = (categoryList) => {
-  const total = categoryList.length;
+const updateCategorySummary = (
+    categoryList
+) => {
 
-  const active = categoryList.filter(
-    (category) => category.isActive
-  ).length;
+    const total =
+        categoryList.length;
 
-  const inactive = categoryList.filter(
-    (category) => !category.isActive
-  ).length;
 
-  if (totalCategoriesElement) {
-    totalCategoriesElement.textContent = total;
-  }
+    const active =
+        categoryList.filter(
+            (category) =>
+                category.isActive
+        ).length;
 
-  if (activeCategoriesElement) {
-    activeCategoriesElement.textContent = active;
-  }
 
-  if (inactiveCategoriesElement) {
-    inactiveCategoriesElement.textContent = inactive;
-  }
+    const inactive =
+        categoryList.filter(
+            (category) =>
+                !category.isActive
+        ).length;
+
+
+    if (totalCategoriesElement) {
+
+        totalCategoriesElement.textContent =
+            total;
+    }
+
+
+    if (activeCategoriesElement) {
+
+        activeCategoriesElement.textContent =
+            active;
+    }
+
+
+    if (inactiveCategoriesElement) {
+
+        inactiveCategoriesElement.textContent =
+            inactive;
+    }
 };
+
 
 /* =========================================================
    SEARCH
 ========================================================= */
 
 const searchCategories = () => {
-  const searchTerm =
-    categorySearchInput?.value
-      .trim()
-      .toLowerCase() || "";
 
-  if (!searchTerm) {
-    renderCategories(categories);
-    return;
-  }
+    const searchTerm =
+        categorySearchInput?.value
+            .trim()
+            .toLowerCase() || "";
 
-  const filteredCategories = categories.filter(
-    (category) => {
-      return (
-        category.name
-          ?.toLowerCase()
-          .includes(searchTerm) ||
-        category.slug
-          ?.toLowerCase()
-          .includes(searchTerm) ||
-        category.description
-          ?.toLowerCase()
-          .includes(searchTerm)
-      );
+
+    if (!searchTerm) {
+
+        renderCategories(
+            categories
+        );
+
+        return;
     }
-  );
 
-  renderCategories(filteredCategories);
+
+    const filteredCategories =
+        categories.filter(
+            (category) => {
+
+                return (
+
+                    category.name
+                        ?.toLowerCase()
+                        .includes(
+                            searchTerm
+                        )
+
+                    ||
+
+                    category.slug
+                        ?.toLowerCase()
+                        .includes(
+                            searchTerm
+                        )
+
+                    ||
+
+                    category.description
+                        ?.toLowerCase()
+                        .includes(
+                            searchTerm
+                        )
+                );
+            }
+        );
+
+
+    renderCategories(
+        filteredCategories
+    );
 };
 
+
 /* =========================================================
-   OPEN ADD MODAL
+   OPEN ADD CATEGORY MODAL
 ========================================================= */
 
 const openAddCategoryModal = () => {
-  if (!categoryModal) {
-    return;
-  }
 
-  categoryModalTitle.textContent = "Add Category";
+    if (!categoryModal) {
+        return;
+    }
 
-  categoryIdInput.value = "";
 
-  categoryNameInput.value = "";
+    categoryModalTitle.textContent =
+        "Add Category";
 
-  categoryDescriptionInput.value = "";
 
-  if (categoryStatusGroup) {
-    categoryStatusGroup.style.display = "none";
-  }
+    if (categoryModalDescription) {
 
-  if (categoryFormError) {
-    categoryFormError.textContent = "";
-    categoryFormError.style.display = "none";
-  }
+        categoryModalDescription.textContent =
+            "Create a new store category.";
+    }
 
-  categoryModal.classList.add("is-open");
 
-  document.body.classList.add(
-    "modal-open"
-  );
+    categoryIdInput.value = "";
 
-  setTimeout(() => {
-    categoryNameInput?.focus();
-  }, 100);
+    categoryNameInput.value = "";
+
+    categoryDescriptionInput.value = "";
+
+
+    if (categoryStatusGroup) {
+
+        categoryStatusGroup.hidden =
+            true;
+    }
+
+
+    if (categoryFormError) {
+
+        categoryFormError.textContent =
+            "";
+
+        categoryFormError.hidden =
+            true;
+    }
+
+
+    if (saveCategoryButtonText) {
+
+        saveCategoryButtonText.textContent =
+            "Create Category";
+    }
+
+
+    /*
+        IMPORTANT:
+        Remove hidden so the modal
+        actually becomes visible.
+    */
+
+    categoryModal.hidden =
+        false;
+
+
+    categoryModal.classList.add(
+        "is-open"
+    );
+
+
+    document.body.classList.add(
+        "modal-open"
+    );
+
+
+    setTimeout(
+        () => {
+
+            categoryNameInput?.focus();
+
+        },
+        100
+    );
 };
+
 
 /* =========================================================
-   OPEN EDIT MODAL
+   OPEN EDIT CATEGORY MODAL
 ========================================================= */
 
-const openEditCategoryModal = (categoryId) => {
-  const category = categories.find(
-    (item) => item._id === categoryId
-  );
+const openEditCategoryModal = (
+    categoryId
+) => {
 
-  if (!category) {
-    console.error("Category not found:", categoryId);
-    return;
-  }
+    const category =
+        categories.find(
+            (item) =>
+                item._id === categoryId
+        );
 
-  categoryModalTitle.textContent = "Edit Category";
 
-  categoryIdInput.value = category._id;
+    if (!category) {
 
-  categoryNameInput.value = category.name || "";
+        console.error(
+            "Category not found:",
+            categoryId
+        );
 
-  categoryDescriptionInput.value =
-    category.description || "";
+        return;
+    }
 
-  if (categoryStatusGroup) {
-    categoryStatusGroup.style.display = "block";
-  }
 
-  if (categoryStatusInput) {
-    categoryStatusInput.value =
-      category.isActive ? "active" : "inactive";
-  }
+    categoryModalTitle.textContent =
+        "Edit Category";
 
-  if (categoryFormError) {
-    categoryFormError.textContent = "";
-    categoryFormError.style.display = "none";
-  }
 
-  categoryModal.classList.add("is-open");
+    if (categoryModalDescription) {
 
-  document.body.classList.add(
-    "modal-open"
-  );
+        categoryModalDescription.textContent =
+            "Update your store category.";
+    }
 
-  setTimeout(() => {
-    categoryNameInput?.focus();
-  }, 100);
+
+    categoryIdInput.value =
+        category._id;
+
+
+    categoryNameInput.value =
+        category.name || "";
+
+
+    categoryDescriptionInput.value =
+        category.description || "";
+
+
+    if (categoryStatusGroup) {
+
+        categoryStatusGroup.hidden =
+            false;
+    }
+
+
+    if (categoryStatusInput) {
+
+        categoryStatusInput.value =
+            category.isActive
+                ? "true"
+                : "false";
+    }
+
+
+    clearFormError();
+
+
+    if (saveCategoryButtonText) {
+
+        saveCategoryButtonText.textContent =
+            "Save Changes";
+    }
+
+
+    categoryModal.hidden =
+        false;
+
+
+    categoryModal.classList.add(
+        "is-open"
+    );
+
+
+    document.body.classList.add(
+        "modal-open"
+    );
+
+
+    setTimeout(
+        () => {
+
+            categoryNameInput?.focus();
+
+        },
+        100
+    );
 };
+
 
 /* =========================================================
    CLOSE CATEGORY MODAL
 ========================================================= */
 
 const closeCategoryModal = () => {
-  if (!categoryModal) {
-    return;
-  }
 
-  categoryModal.classList.remove("is-open");
+    if (!categoryModal) {
+        return;
+    }
 
-  document.body.classList.remove(
-    "modal-open"
-  );
+
+    categoryModal.classList.remove(
+        "is-open"
+    );
+
+
+    categoryModal.hidden =
+        true;
+
+
+    document.body.classList.remove(
+        "modal-open"
+    );
 };
+
 
 /* =========================================================
    SAVE CATEGORY
 ========================================================= */
 
-const saveCategory = async (event) => {
-  event.preventDefault();
+const saveCategory = async (
+    event
+) => {
 
-  const name = categoryNameInput.value.trim();
+    event.preventDefault();
 
-  const description =
-    categoryDescriptionInput.value.trim();
 
-  const categoryId =
-    categoryIdInput.value.trim();
+    const name =
+        categoryNameInput.value.trim();
 
-  if (!name) {
-    showFormError(
-      "Category name is required."
-    );
 
-    categoryNameInput.focus();
+    const description =
+        categoryDescriptionInput.value.trim();
 
-    return;
-  }
 
-  if (name.length < 2) {
-    showFormError(
-      "Category name must be at least 2 characters long."
-    );
+    const categoryId =
+        categoryIdInput.value.trim();
 
-    categoryNameInput.focus();
 
-    return;
-  }
+    /* =====================================================
+       VALIDATION
+    ===================================================== */
 
-  if (name.length > 50) {
-    showFormError(
-      "Category name cannot exceed 50 characters."
-    );
+    if (!name) {
 
-    categoryNameInput.focus();
+        showFormError(
+            "Category name is required."
+        );
 
-    return;
-  }
+        categoryNameInput.focus();
 
-  if (description.length > 300) {
-    showFormError(
-      "Category description cannot exceed 300 characters."
-    );
-
-    categoryDescriptionInput.focus();
-
-    return;
-  }
-
-  clearFormError();
-
-  setSaveButtonLoading(true);
-
-  try {
-    /*
-      ADD CATEGORY
-    */
-
-    if (!categoryId) {
-      await apiRequest(API_BASE_URL, {
-        method: "POST",
-        body: JSON.stringify({
-          name,
-          description,
-        }),
-      });
-
-      closeCategoryModal();
-
-      await loadCategories();
-
-      showSuccessMessage(
-        "Category created successfully."
-      );
-
-      return;
+        return;
     }
 
-    /*
-      EDIT CATEGORY
-    */
 
-    await apiRequest(
-      `${API_BASE_URL}/${categoryId}`,
-      {
-        method: "PUT",
-        body: JSON.stringify({
-          name,
-          description,
-        }),
-      }
+    if (name.length < 2) {
+
+        showFormError(
+            "Category name must be at least 2 characters long."
+        );
+
+        categoryNameInput.focus();
+
+        return;
+    }
+
+
+    if (name.length > 50) {
+
+        showFormError(
+            "Category name cannot exceed 50 characters."
+        );
+
+        categoryNameInput.focus();
+
+        return;
+    }
+
+
+    if (description.length > 300) {
+
+        showFormError(
+            "Category description cannot exceed 300 characters."
+        );
+
+        categoryDescriptionInput.focus();
+
+        return;
+    }
+
+
+    /* =====================================================
+       AUTH CHECK
+    ===================================================== */
+
+    const token =
+        getAdminToken();
+
+
+    if (!token) {
+
+        showFormError(
+            "You are not logged in as an administrator. Please log in again."
+        );
+
+        return;
+    }
+
+
+    clearFormError();
+
+
+    setSaveButtonLoading(
+        true
     );
 
-    /*
-      Update status separately if necessary.
-    */
 
-    const originalCategory = categories.find(
-      (category) =>
-        category._id === categoryId
-    );
+    try {
 
-    const selectedStatus =
-      categoryStatusInput?.value === "active";
+        /* =================================================
+           CREATE
+        ================================================= */
 
-    if (
-      originalCategory &&
-      originalCategory.isActive !== selectedStatus
-    ) {
-      await apiRequest(
-        `${API_BASE_URL}/${categoryId}/status`,
-        {
-          method: "PATCH",
-          body: JSON.stringify({
-            isActive: selectedStatus,
-          }),
+        if (!categoryId) {
+
+            await apiRequest(
+                API_BASE_URL,
+                {
+                    method: "POST",
+
+                    body: JSON.stringify({
+                        name,
+                        description,
+                    }),
+                }
+            );
+
+
+            closeCategoryModal();
+
+
+            await loadCategories();
+
+
+            showSuccessMessage(
+                "Category created successfully."
+            );
+
+
+            return;
         }
-      );
+
+
+        /* =================================================
+           UPDATE
+        ================================================= */
+
+        await apiRequest(
+            `${API_BASE_URL}/${categoryId}`,
+            {
+                method: "PUT",
+
+                body: JSON.stringify({
+                    name,
+                    description,
+                }),
+            }
+        );
+
+
+        /* =================================================
+           UPDATE STATUS
+        ================================================= */
+
+        const originalCategory =
+            categories.find(
+                (category) =>
+                    category._id ===
+                    categoryId
+            );
+
+
+        const selectedStatus =
+            categoryStatusInput?.value ===
+            "true";
+
+
+        if (
+            originalCategory &&
+            originalCategory.isActive !==
+                selectedStatus
+        ) {
+
+            await apiRequest(
+                `${API_BASE_URL}/${categoryId}/status`,
+                {
+                    method: "PATCH",
+
+                    body: JSON.stringify({
+                        isActive:
+                            selectedStatus,
+                    }),
+                }
+            );
+        }
+
+
+        closeCategoryModal();
+
+
+        await loadCategories();
+
+
+        showSuccessMessage(
+            "Category updated successfully."
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Failed to save category:",
+            error
+        );
+
+
+        showFormError(
+            error.message ||
+            "Failed to save category."
+        );
+
+    } finally {
+
+        setSaveButtonLoading(
+            false
+        );
     }
-
-    closeCategoryModal();
-
-    await loadCategories();
-
-    showSuccessMessage(
-      "Category updated successfully."
-    );
-  } catch (error) {
-    console.error(
-      "Failed to save category:",
-      error
-    );
-
-    showFormError(
-      error.message ||
-        "Failed to save category."
-    );
-  } finally {
-    setSaveButtonLoading(false);
-  }
 };
+
 
 /* =========================================================
    CHANGE CATEGORY STATUS
 ========================================================= */
 
 const changeCategoryStatus = async (
-  categoryId
+    categoryId
 ) => {
-  const category = categories.find(
-    (item) => item._id === categoryId
-  );
 
-  if (!category) {
-    return;
-  }
+    const category =
+        categories.find(
+            (item) =>
+                item._id === categoryId
+        );
 
-  const newStatus = !category.isActive;
 
-  const actionText = newStatus
-    ? "activate"
-    : "deactivate";
+    if (!category) {
+        return;
+    }
 
-  const confirmed = window.confirm(
-    `Are you sure you want to ${actionText} "${category.name}"?`
-  );
 
-  if (!confirmed) {
-    return;
-  }
+    const newStatus =
+        !category.isActive;
 
-  try {
-    await apiRequest(
-      `${API_BASE_URL}/${categoryId}/status`,
-      {
-        method: "PATCH",
-        body: JSON.stringify({
-          isActive: newStatus,
-        }),
-      }
-    );
 
-    await loadCategories();
-
-    showSuccessMessage(
-      `Category ${
+    const actionText =
         newStatus
-          ? "activated"
-          : "deactivated"
-      } successfully.`
-    );
-  } catch (error) {
-    console.error(
-      "Failed to change category status:",
-      error
-    );
+            ? "activate"
+            : "deactivate";
 
-    showErrorMessage(
-      error.message ||
-        "Failed to update category status."
-    );
-  }
+
+    const confirmed =
+        window.confirm(
+            `Are you sure you want to ${actionText} "${category.name}"?`
+        );
+
+
+    if (!confirmed) {
+        return;
+    }
+
+
+    try {
+
+        await apiRequest(
+            `${API_BASE_URL}/${categoryId}/status`,
+            {
+                method: "PATCH",
+
+                body: JSON.stringify({
+                    isActive:
+                        newStatus,
+                }),
+            }
+        );
+
+
+        await loadCategories();
+
+
+        showSuccessMessage(
+            `Category ${
+                newStatus
+                    ? "activated"
+                    : "deactivated"
+            } successfully.`
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Failed to change category status:",
+            error
+        );
+
+
+        showErrorMessage(
+            error.message ||
+            "Failed to update category status."
+        );
+    }
 };
+
 
 /* =========================================================
-   DELETE CATEGORY
+   OPEN DELETE MODAL
 ========================================================= */
 
-const openDeleteModal = (categoryId) => {
-  const category = categories.find(
-    (item) => item._id === categoryId
-  );
+const openDeleteModal = (
+    categoryId
+) => {
 
-  if (!category) {
-    return;
-  }
+    const category =
+        categories.find(
+            (item) =>
+                item._id === categoryId
+        );
 
-  categoryToDelete = category;
 
-  if (deleteCategoryName) {
-    deleteCategoryName.textContent =
-      category.name;
-  }
+    if (!category) {
+        return;
+    }
 
-  deleteModal?.classList.add(
-    "is-open"
-  );
 
-  document.body.classList.add(
-    "modal-open"
-  );
+    categoryToDelete =
+        category;
+
+
+    const deleteMessage =
+        document.getElementById(
+            "deleteModalMessage"
+        );
+
+
+    if (deleteMessage) {
+
+        deleteMessage.textContent =
+            `The category "${category.name}" will be deactivated. Products using it will not be deleted.`;
+    }
+
+
+    deleteModal?.classList.add(
+        "is-open"
+    );
+
+
+    if (deleteModal) {
+
+        deleteModal.hidden =
+            false;
+    }
+
+
+    document.body.classList.add(
+        "modal-open"
+    );
 };
+
 
 /* =========================================================
    CONFIRM DELETE
 ========================================================= */
 
 const deleteCategory = async () => {
-  if (!categoryToDelete) {
-    return;
-  }
 
-  const categoryId =
-    categoryToDelete._id;
+    if (!categoryToDelete) {
+        return;
+    }
 
-  try {
-    setDeleteButtonLoading(true);
 
-    await apiRequest(
-      `${API_BASE_URL}/${categoryId}`,
-      {
-        method: "DELETE",
-      }
-    );
+    const categoryId =
+        categoryToDelete._id;
 
-    closeDeleteModal();
 
-    categoryToDelete = null;
+    try {
 
-    await loadCategories();
+        setDeleteButtonLoading(
+            true
+        );
 
-    showSuccessMessage(
-      "Category deleted successfully."
-    );
-  } catch (error) {
-    console.error(
-      "Failed to delete category:",
-      error
-    );
 
-    showErrorMessage(
-      error.message ||
-        "Failed to delete category."
-    );
-  } finally {
-    setDeleteButtonLoading(false);
-  }
+        await apiRequest(
+            `${API_BASE_URL}/${categoryId}`,
+            {
+                method: "DELETE",
+            }
+        );
+
+
+        closeDeleteModal();
+
+
+        categoryToDelete =
+            null;
+
+
+        await loadCategories();
+
+
+        showSuccessMessage(
+            "Category deleted successfully."
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Failed to delete category:",
+            error
+        );
+
+
+        showErrorMessage(
+            error.message ||
+            "Failed to delete category."
+        );
+
+    } finally {
+
+        setDeleteButtonLoading(
+            false
+        );
+    }
 };
+
 
 /* =========================================================
    CLOSE DELETE MODAL
 ========================================================= */
 
 const closeDeleteModal = () => {
-  deleteModal?.classList.remove(
-    "is-open"
-  );
 
-  document.body.classList.remove(
-    "modal-open"
-  );
+    if (deleteModal) {
 
-  categoryToDelete = null;
+        deleteModal.classList.remove(
+            "is-open"
+        );
+
+        deleteModal.hidden =
+            true;
+    }
+
+
+    document.body.classList.remove(
+        "modal-open"
+    );
+
+
+    categoryToDelete =
+        null;
 };
+
 
 /* =========================================================
    TABLE ACTIONS
 ========================================================= */
 
 const handleCategoryTableClick = (
-  event
+    event
 ) => {
-  const button =
-    event.target.closest(
-      "[data-action]"
-    );
 
-  if (!button) {
-    return;
-  }
+    const button =
+        event.target.closest(
+            "[data-action]"
+        );
 
-  const action =
-    button.dataset.action;
 
-  const categoryId =
-    button.dataset.id;
+    if (!button) {
+        return;
+    }
 
-  if (!categoryId) {
-    return;
-  }
 
-  if (action === "edit") {
-    openEditCategoryModal(
-      categoryId
-    );
-  }
+    const action =
+        button.dataset.action;
 
-  if (action === "status") {
-    changeCategoryStatus(
-      categoryId
-    );
-  }
 
-  if (action === "delete") {
-    openDeleteModal(
-      categoryId
-    );
-  }
+    const categoryId =
+        button.dataset.id;
+
+
+    if (!categoryId) {
+        return;
+    }
+
+
+    if (action === "edit") {
+
+        openEditCategoryModal(
+            categoryId
+        );
+    }
+
+
+    if (action === "status") {
+
+        changeCategoryStatus(
+            categoryId
+        );
+    }
+
+
+    if (action === "delete") {
+
+        openDeleteModal(
+            categoryId
+        );
+    }
 };
+
 
 /* =========================================================
    FORM ERROR
 ========================================================= */
 
-const showFormError = (message) => {
-  if (!categoryFormError) {
-    return;
-  }
+const showFormError = (
+    message
+) => {
 
-  categoryFormError.textContent = message;
+    if (!categoryFormError) {
+        return;
+    }
 
-  categoryFormError.style.display =
-    "block";
+
+    categoryFormError.textContent =
+        message;
+
+
+    categoryFormError.hidden =
+        false;
 };
+
 
 const clearFormError = () => {
-  if (!categoryFormError) {
-    return;
-  }
 
-  categoryFormError.textContent = "";
+    if (!categoryFormError) {
+        return;
+    }
 
-  categoryFormError.style.display =
-    "none";
+
+    categoryFormError.textContent =
+        "";
+
+
+    categoryFormError.hidden =
+        true;
 };
 
+
 /* =========================================================
-   BUTTON LOADING STATES
+   SAVE BUTTON LOADING
 ========================================================= */
 
 const setSaveButtonLoading = (
-  loading
+    loading
 ) => {
-  if (!saveCategoryButton) {
-    return;
-  }
 
-  if (loading) {
-    saveCategoryButton.disabled = true;
+    if (!saveCategoryButton) {
+        return;
+    }
 
-    saveCategoryButton.dataset.originalText =
-      saveCategoryButton.textContent;
 
-    saveCategoryButton.textContent =
-      "Saving...";
-  } else {
-    saveCategoryButton.disabled = false;
+    if (loading) {
 
-    saveCategoryButton.textContent =
-      saveCategoryButton.dataset
-        .originalText ||
-      "Save Category";
-  }
+        saveCategoryButton.disabled =
+            true;
+
+
+        if (saveCategoryButtonText) {
+
+            saveCategoryButtonText.textContent =
+                "Saving...";
+        }
+
+    } else {
+
+        saveCategoryButton.disabled =
+            false;
+
+
+        if (
+            categoryIdInput.value.trim()
+        ) {
+
+            if (saveCategoryButtonText) {
+
+                saveCategoryButtonText.textContent =
+                    "Save Changes";
+            }
+
+        } else {
+
+            if (saveCategoryButtonText) {
+
+                saveCategoryButtonText.textContent =
+                    "Create Category";
+            }
+        }
+    }
 };
+
+
+/* =========================================================
+   DELETE BUTTON LOADING
+========================================================= */
 
 const setDeleteButtonLoading = (
-  loading
+    loading
 ) => {
-  if (!confirmDeleteButton) {
-    return;
-  }
 
-  if (loading) {
-    confirmDeleteButton.disabled = true;
+    if (!confirmDeleteButton) {
+        return;
+    }
 
-    confirmDeleteButton.dataset.originalText =
-      confirmDeleteButton.textContent;
 
-    confirmDeleteButton.textContent =
-      "Deleting...";
-  } else {
-    confirmDeleteButton.disabled = false;
+    if (loading) {
 
-    confirmDeleteButton.textContent =
-      confirmDeleteButton.dataset
-        .originalText ||
-      "Delete Category";
-  }
+        confirmDeleteButton.disabled =
+            true;
+
+        confirmDeleteButton.textContent =
+            "Deleting...";
+
+    } else {
+
+        confirmDeleteButton.disabled =
+            false;
+
+        confirmDeleteButton.textContent =
+            "Delete Category";
+    }
 };
+
 
 /* =========================================================
    LOADING STATE
 ========================================================= */
 
 const showLoadingState = () => {
-  if (!categoriesTableBody) {
-    return;
-  }
 
-  hideEmptyState();
+    if (!categoriesTableBody) {
+        return;
+    }
 
-  categoriesTableBody.innerHTML = `
-    <tr>
-      <td
-        colspan="6"
-        class="table-loading"
-      >
-        Loading categories...
-      </td>
-    </tr>
-  `;
+
+    hideEmptyState();
+
+
+    categoriesTableBody.innerHTML = `
+        <tr>
+
+            <td
+                colspan="6"
+                class="table-loading"
+            >
+                Loading categories...
+            </td>
+
+        </tr>
+    `;
 };
+
 
 /* =========================================================
    TABLE ERROR
 ========================================================= */
 
 const showTableError = (
-  message
+    message
 ) => {
-  if (!categoriesTableBody) {
-    return;
-  }
 
-  hideEmptyState();
+    if (!categoriesTableBody) {
+        return;
+    }
 
-  categoriesTableBody.innerHTML = `
-    <tr>
-      <td
-        colspan="6"
-        class="table-error"
-      >
-        ${escapeHtml(message)}
-      </td>
-    </tr>
-  `;
+
+    hideEmptyState();
+
+
+    categoriesTableBody.innerHTML = `
+        <tr>
+
+            <td
+                colspan="6"
+                class="table-error"
+            >
+                ${escapeHtml(message)}
+            </td>
+
+        </tr>
+    `;
 };
+
 
 /* =========================================================
    EMPTY STATE
 ========================================================= */
 
 const showEmptyState = () => {
-  if (tableWrapper) {
-    tableWrapper.style.display =
-      "none";
-  }
 
-  if (emptyState) {
-    emptyState.style.display =
-      "block";
-  }
+    if (tableWrapper) {
+
+        tableWrapper.style.display =
+            "none";
+    }
+
+
+    if (emptyState) {
+
+        emptyState.hidden =
+            false;
+
+        emptyState.style.display =
+            "block";
+    }
 };
+
 
 const hideEmptyState = () => {
-  if (tableWrapper) {
-    tableWrapper.style.display =
-      "block";
-  }
 
-  if (emptyState) {
-    emptyState.style.display =
-      "none";
-  }
+    if (tableWrapper) {
+
+        tableWrapper.style.display =
+            "block";
+    }
+
+
+    if (emptyState) {
+
+        emptyState.hidden =
+            true;
+
+        emptyState.style.display =
+            "none";
+    }
 };
+
 
 /* =========================================================
    SUCCESS MESSAGE
 ========================================================= */
 
 const showSuccessMessage = (
-  message
+    message
 ) => {
-  createToast(
-    message,
-    "success"
-  );
+
+    createToast(
+        message,
+        "success"
+    );
 };
+
 
 /* =========================================================
    ERROR MESSAGE
 ========================================================= */
 
 const showErrorMessage = (
-  message
+    message
 ) => {
-  createToast(
-    message,
-    "error"
-  );
+
+    createToast(
+        message,
+        "error"
+    );
 };
+
 
 /* =========================================================
    TOAST
 ========================================================= */
 
 const createToast = (
-  message,
-  type
+    message,
+    type
 ) => {
-  const existingToast =
-    document.querySelector(
-      ".admin-toast"
+
+    const existingToast =
+        document.querySelector(
+            ".admin-toast"
+        );
+
+
+    if (existingToast) {
+
+        existingToast.remove();
+    }
+
+
+    const toast =
+        document.createElement(
+            "div"
+        );
+
+
+    toast.className =
+        `admin-toast admin-toast-${type}`;
+
+
+    toast.textContent =
+        message;
+
+
+    document.body.appendChild(
+        toast
     );
 
-  if (existingToast) {
-    existingToast.remove();
-  }
 
-  const toast =
-    document.createElement("div");
+    requestAnimationFrame(
+        () => {
 
-  toast.className =
-    `admin-toast admin-toast-${type}`;
-
-  toast.textContent = message;
-
-  document.body.appendChild(toast);
-
-  requestAnimationFrame(() => {
-    toast.classList.add(
-      "show"
-    );
-  });
-
-  setTimeout(() => {
-    toast.classList.remove(
-      "show"
+            toast.classList.add(
+                "show"
+            );
+        }
     );
 
-    setTimeout(() => {
-      toast.remove();
-    }, 300);
-  }, 3000);
+
+    setTimeout(
+        () => {
+
+            toast.classList.remove(
+                "show"
+            );
+
+
+            setTimeout(
+                () => {
+
+                    toast.remove();
+
+                },
+                300
+            );
+
+        },
+        3000
+    );
 };
+
 
 /* =========================================================
    DATE FORMAT
 ========================================================= */
 
 const formatDate = (
-  dateString
+    dateString
 ) => {
-  if (!dateString) {
-    return "—";
-  }
 
-  const date =
-    new Date(dateString);
-
-  if (Number.isNaN(
-    date.getTime()
-  )) {
-    return "—";
-  }
-
-  return date.toLocaleDateString(
-    "en-US",
-    {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
+    if (!dateString) {
+        return "—";
     }
-  );
+
+
+    const date =
+        new Date(dateString);
+
+
+    if (
+        Number.isNaN(
+            date.getTime()
+        )
+    ) {
+
+        return "—";
+    }
+
+
+    return date.toLocaleDateString(
+        "en-US",
+        {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+        }
+    );
 };
+
+
+/* =========================================================
+   CATEGORY INITIAL
+========================================================= */
+
+const getCategoryInitial = (
+    name
+) => {
+
+    if (!name) {
+        return "?";
+    }
+
+
+    return name
+        .trim()
+        .charAt(0)
+        .toUpperCase();
+};
+
 
 /* =========================================================
    HTML ESCAPE
 ========================================================= */
 
 const escapeHtml = (
-  value
+    value
 ) => {
-  if (value === null ||
-      value === undefined) {
-    return "";
-  }
 
-  return String(value)
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
+    if (
+        value === null ||
+        value === undefined
+    ) {
+
+        return "";
+    }
+
+
+    return String(value)
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+        .replace(
+            /</g,
+            "&lt;"
+        )
+        .replace(
+            />/g,
+            "&gt;"
+        )
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+        .replace(
+            /'/g,
+            "&#039;"
+        );
 };
+
 
 /* =========================================================
    MODAL BACKDROP CLICK
 ========================================================= */
 
 const handleModalBackdropClick = (
-  event
+    event
 ) => {
-  if (
-    event.target ===
-    categoryModal
-  ) {
-    closeCategoryModal();
-  }
 
-  if (
-    event.target ===
-    deleteModal
-  ) {
-    closeDeleteModal();
-  }
+    if (
+        event.target ===
+        categoryModal
+    ) {
+
+        closeCategoryModal();
+    }
+
+
+    if (
+        event.target ===
+        deleteModal
+    ) {
+
+        closeDeleteModal();
+    }
 };
+
 
 /* =========================================================
    ESCAPE KEY
 ========================================================= */
 
 const handleEscapeKey = (
-  event
+    event
 ) => {
-  if (event.key !== "Escape") {
-    return;
-  }
 
-  closeCategoryModal();
+    if (event.key !== "Escape") {
+        return;
+    }
 
-  closeDeleteModal();
+
+    closeCategoryModal();
+
+    closeDeleteModal();
 };
+
 
 /* =========================================================
    EVENT LISTENERS
 ========================================================= */
 
 addCategoryButton?.addEventListener(
-  "click",
-  openAddCategoryModal
+    "click",
+    openAddCategoryModal
 );
+
+
+emptyAddCategoryButton?.addEventListener(
+    "click",
+    openAddCategoryModal
+);
+
 
 closeCategoryModalButton?.addEventListener(
-  "click",
-  closeCategoryModal
+    "click",
+    closeCategoryModal
 );
+
 
 cancelCategoryButton?.addEventListener(
-  "click",
-  closeCategoryModal
+    "click",
+    closeCategoryModal
 );
+
 
 categoryForm?.addEventListener(
-  "submit",
-  saveCategory
+    "submit",
+    saveCategory
 );
+
 
 categorySearchInput?.addEventListener(
-  "input",
-  searchCategories
+    "input",
+    searchCategories
 );
+
 
 categoriesTableBody?.addEventListener(
-  "click",
-  handleCategoryTableClick
+    "click",
+    handleCategoryTableClick
 );
 
-closeDeleteModalButton?.addEventListener(
-  "click",
-  closeDeleteModal
-);
 
 cancelDeleteButton?.addEventListener(
-  "click",
-  closeDeleteModal
+    "click",
+    closeDeleteModal
 );
+
 
 confirmDeleteButton?.addEventListener(
-  "click",
-  deleteCategory
+    "click",
+    deleteCategory
 );
+
 
 categoryModal?.addEventListener(
-  "click",
-  handleModalBackdropClick
+    "click",
+    handleModalBackdropClick
 );
+
 
 deleteModal?.addEventListener(
-  "click",
-  handleModalBackdropClick
+    "click",
+    handleModalBackdropClick
 );
 
+
 document.addEventListener(
-  "keydown",
-  handleEscapeKey
+    "keydown",
+    handleEscapeKey
 );
+
 
 /* =========================================================
    INITIALIZE
 ========================================================= */
 
 document.addEventListener(
-  "DOMContentLoaded",
-  () => {
-    loadCategories();
+    "DOMContentLoaded",
+    () => {
 
-    console.log(
-      "HIPSTER Categories initialized"
-    );
-  }
+        loadCategories();
+
+
+        console.log(
+            "HIPSTER Categories initialized"
+        );
+    }
 );
