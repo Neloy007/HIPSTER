@@ -4,10 +4,10 @@
   "description": "Backend API for HIPSTER clothing e-commerce platform",
   "main": "dist/server.js",
   "scripts": {
-  "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
-  "build": "tsc",
-  "start": "node dist/server.js",
-  "create-admin": "ts-node src/scripts/createAdmin.ts"
+    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "create-admin": "ts-node src/scripts/createAdmin.ts"
   },
   "keywords": [
     "hipster",
@@ -19,18 +19,21 @@
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^3.0.3",
+    "cloudinary": "^2.11.0",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "helmet": "^8.3.0",
     "jsonwebtoken": "^9.0.3",
     "mongodb": "^7.6.0",
-    "mongoose": "^9.10.1"
+    "mongoose": "^9.10.1",
+    "multer": "^2.4.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
     "@types/jsonwebtoken": "^9.0.10",
+    "@types/multer": "^2.2.0",
     "@types/node": "^26.5.1",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.9.2"

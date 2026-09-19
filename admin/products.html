@@ -12,11 +12,23 @@
 
     <title>Products | HIPSTER Admin</title>
 
-    <!-- Admin CSS -->
-    <link rel="stylesheet" href="css/admin.css">
+    <!-- =====================================================
+         ADMIN CSS
+    ====================================================== -->
 
-    <!-- Products CSS -->
-    <link rel="stylesheet" href="css/products.css">
+    <link
+        rel="stylesheet"
+        href="css/admin.css"
+    >
+
+    <!-- =====================================================
+         PRODUCTS CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="css/products.css"
+    >
 
 </head>
 
@@ -38,7 +50,9 @@
         <aside class="sidebar">
 
 
-            <!-- Logo -->
+            <!-- =================================================
+                 SIDEBAR LOGO
+            ================================================== -->
 
             <div class="sidebar-logo">
 
@@ -53,7 +67,9 @@
             </div>
 
 
-            <!-- Navigation -->
+            <!-- =================================================
+                 SIDEBAR NAVIGATION
+            ================================================== -->
 
             <nav class="sidebar-nav">
 
@@ -68,8 +84,6 @@
                         MAIN
                     </p>
 
-
-                    <!-- Dashboard -->
 
                     <a
                         href="index.html"
@@ -87,8 +101,6 @@
                     </a>
 
 
-                    <!-- Products -->
-
                     <a
                         href="products.html"
                         class="nav-link active"
@@ -105,8 +117,6 @@
                     </a>
 
 
-                    <!-- Categories -->
-
                     <a
                         href="categories.html"
                         class="nav-link"
@@ -122,8 +132,6 @@
 
                     </a>
 
-
-                    <!-- Orders -->
 
                     <a
                         href="orders.html"
@@ -155,8 +163,6 @@
                     </p>
 
 
-                    <!-- Customers -->
-
                     <a
                         href="customers.html"
                         class="nav-link"
@@ -172,8 +178,6 @@
 
                     </a>
 
-
-                    <!-- Reviews -->
 
                     <a
                         href="reviews.html"
@@ -205,8 +209,6 @@
                     </p>
 
 
-                    <!-- Inventory -->
-
                     <a
                         href="inventory.html"
                         class="nav-link"
@@ -222,8 +224,6 @@
 
                     </a>
 
-
-                    <!-- Discounts -->
 
                     <a
                         href="discounts.html"
@@ -255,8 +255,6 @@
                     </p>
 
 
-                    <!-- Settings -->
-
                     <a
                         href="settings.html"
                         class="nav-link"
@@ -286,8 +284,6 @@
             <div class="sidebar-bottom">
 
 
-                <!-- View Store -->
-
                 <a
                     href="../frontend/index.html"
                     class="store-link"
@@ -301,8 +297,6 @@
 
                 </a>
 
-
-                <!-- Logout -->
 
                 <button
                     type="button"
@@ -327,6 +321,20 @@
 
 
         <!-- =================================================
+             SIDEBAR OVERLAY
+             
+             Used by admin.js on smaller screens.
+        ================================================== -->
+
+        <div
+            class="sidebar-overlay"
+            id="sidebarOverlay"
+            aria-hidden="true"
+        ></div>
+
+
+
+        <!-- =================================================
              MAIN CONTENT
         ================================================== -->
 
@@ -334,26 +342,35 @@
 
 
             <!-- =================================================
-                 HEADER
+                 ADMIN HEADER
             ================================================== -->
 
             <header class="admin-header">
 
 
-                <!-- Header Left -->
+                <!-- =================================================
+                     HEADER LEFT
+                ================================================== -->
 
                 <div class="header-left">
 
+
+                    <!-- Hamburger -->
 
                     <button
                         type="button"
                         class="menu-button"
                         id="menuButton"
-                        aria-label="Open menu"
+                        aria-label="Toggle sidebar"
+                        aria-expanded="true"
                     >
+
                         ☰
+
                     </button>
 
+
+                    <!-- Page Title -->
 
                     <div>
 
@@ -372,12 +389,16 @@
 
 
 
-                <!-- Header Right -->
+                <!-- =================================================
+                     HEADER RIGHT
+                ================================================== -->
 
                 <div class="header-right">
 
 
-                    <!-- Search -->
+                    <!-- =================================================
+                         ADMIN SEARCH
+                    ================================================== -->
 
                     <div class="admin-search">
 
@@ -395,7 +416,9 @@
 
 
 
-                    <!-- Notifications -->
+                    <!-- =================================================
+                         NOTIFICATIONS
+                    ================================================== -->
 
                     <button
                         type="button"
@@ -411,7 +434,9 @@
 
 
 
-                    <!-- Admin Profile -->
+                    <!-- =================================================
+                         ADMIN PROFILE
+                    ================================================== -->
 
                     <button
                         type="button"
@@ -459,7 +484,7 @@
 
 
                 <!-- =================================================
-                     PAGE HEADER
+                     PRODUCTS PAGE HEADER
                 ================================================== -->
 
                 <div class="products-page-header">
@@ -484,6 +509,8 @@
 
                     </div>
 
+
+                    <!-- Add Product Button -->
 
                     <button
                         type="button"
@@ -511,10 +538,11 @@
                 <div class="product-summary-grid">
 
 
-                    <!-- Total Products -->
+                    <!-- =================================================
+                         TOTAL PRODUCTS
+                    ================================================== -->
 
                     <div class="product-summary-card">
-
 
                         <div class="summary-card-icon">
                             #
@@ -533,15 +561,15 @@
 
                         </div>
 
-
                     </div>
 
 
 
-                    <!-- Active Products -->
+                    <!-- =================================================
+                         ACTIVE PRODUCTS
+                    ================================================== -->
 
                     <div class="product-summary-card">
-
 
                         <div class="summary-card-icon">
                             ✓
@@ -560,15 +588,15 @@
 
                         </div>
 
-
                     </div>
 
 
 
-                    <!-- Out Of Stock -->
+                    <!-- =================================================
+                         OUT OF STOCK
+                    ================================================== -->
 
                     <div class="product-summary-card">
-
 
                         <div class="summary-card-icon">
                             !
@@ -587,15 +615,15 @@
 
                         </div>
 
-
                     </div>
 
 
 
-                    <!-- Featured -->
+                    <!-- =================================================
+                         FEATURED
+                    ================================================== -->
 
                     <div class="product-summary-card">
-
 
                         <div class="summary-card-icon">
                             ☆
@@ -613,7 +641,6 @@
                             </strong>
 
                         </div>
-
 
                     </div>
 
@@ -738,7 +765,9 @@
                 <div class="dashboard-card products-card">
 
 
-                    <!-- Table Header -->
+                    <!-- =================================================
+                         TABLE CARD HEADER
+                    ================================================== -->
 
                     <div class="products-card-header">
 
@@ -807,7 +836,9 @@
                             class="secondary-button"
                             id="retryProductsButton"
                         >
+
                             Try Again
+
                         </button>
 
                     </div>
@@ -850,6 +881,7 @@
                             Add Product
 
                         </button>
+
 
                     </div>
 
@@ -932,12 +964,13 @@
                         hidden
                     >
 
-
                         <span
                             class="products-results-info"
                             id="productsResultsInfo"
                         >
+
                             Showing 0 products
+
                         </span>
 
 
@@ -969,6 +1002,10 @@
 
     <!-- =====================================================
          ADD / EDIT PRODUCT MODAL
+         
+         IMPORTANT:
+         This is OUTSIDE .admin-layout.
+         Therefore it is completely separate from the sidebar.
     ====================================================== -->
 
     <div
@@ -986,7 +1023,9 @@
         >
 
 
-            <!-- Modal Header -->
+            <!-- =================================================
+                 MODAL HEADER
+            ================================================== -->
 
             <div class="modal-header">
 
@@ -997,12 +1036,14 @@
                         Add Product
                     </h2>
 
-                    <p>
+                    <p id="productModalDescription">
                         Add product information to your catalog.
                     </p>
 
                 </div>
 
+
+                <!-- Close -->
 
                 <button
                     type="button"
@@ -1010,7 +1051,9 @@
                     id="closeProductModal"
                     aria-label="Close modal"
                 >
+
                     ×
+
                 </button>
 
 
@@ -1018,504 +1061,248 @@
 
 
 
-            <!-- Product Form -->
+            <!-- =================================================
+                 PRODUCT FORM
+            ================================================== -->
 
             <form id="productForm">
 
 
-                <div class="modal-body">
+                <!-- =================================================
+                     PRODUCT INFORMATION
+                ================================================== -->
+
+                <div class="product-form-section">
 
 
-                    <!-- =================================================
-                         PRODUCT INFORMATION
-                    ================================================== -->
-
-                    <div class="form-section">
-
+                    <div class="product-form-section-header">
 
                         <h3>
                             Product Information
                         </h3>
 
-
-                        <div class="form-grid">
-
-
-                            <!-- Product Name -->
-
-                            <div class="form-group form-group-full">
-
-                                <label for="productName">
-                                    Product Name
-                                </label>
-
-
-                                <input
-                                    type="text"
-                                    id="productName"
-                                    name="name"
-                                    placeholder="e.g. Oversized Cotton T-Shirt"
-                                    required
-                                >
-
-
-                                <small
-                                    class="form-error"
-                                    id="productNameError"
-                                ></small>
-
-                            </div>
-
-
-
-                            <!-- Brand -->
-
-                            <div class="form-group">
-
-                                <label for="productBrand">
-                                    Brand
-                                </label>
-
-
-                                <input
-                                    type="text"
-                                    id="productBrand"
-                                    name="brand"
-                                    placeholder="e.g. HIPSTER"
-                                    required
-                                >
-
-
-                                <small
-                                    class="form-error"
-                                    id="productBrandError"
-                                ></small>
-
-                            </div>
-
-
-
-                            <!-- Category -->
-
-                            <div class="form-group">
-
-                                <label for="productCategory">
-                                    Category
-                                </label>
-
-
-                                <select
-                                    id="productCategory"
-                                    name="category"
-                                    required
-                                >
-
-                                    <option value="">
-                                        Select category
-                                    </option>
-
-                                </select>
-
-
-                                <small
-                                    class="form-error"
-                                    id="productCategoryError"
-                                ></small>
-
-                            </div>
-
-
-
-                            <!-- Description -->
-
-                            <div class="form-group form-group-full">
-
-                                <label for="productDescription">
-                                    Description
-                                </label>
-
-
-                                <textarea
-                                    id="productDescription"
-                                    name="description"
-                                    rows="4"
-                                    placeholder="Describe the product..."
-                                ></textarea>
-
-                            </div>
-
-
-                        </div>
+                        <p>
+                            Enter the basic information for your product.
+                        </p>
 
                     </div>
 
 
 
-                    <!-- =================================================
-                         PRICING
-                    ================================================== -->
-
-                    <div class="form-section">
+                    <div class="form-grid">
 
 
-                        <h3>
-                            Pricing
-                        </h3>
+                        <!-- =================================================
+                             PRODUCT NAME
+                        ================================================== -->
 
+                        <div class="form-group">
 
-                        <div class="form-grid">
+                            <label for="productName">
+                                Product Name
+                            </label>
 
+                            <input
+                                type="text"
+                                id="productName"
+                                name="name"
+                                placeholder="e.g. Oversized Cotton T-Shirt"
+                                required
+                            >
 
-                            <!-- Price -->
-
-                            <div class="form-group">
-
-                                <label for="productPrice">
-                                    Price
-                                </label>
-
-
-                                <div class="input-with-prefix">
-
-                                    <span>
-                                        $
-                                    </span>
-
-
-                                    <input
-                                        type="number"
-                                        id="productPrice"
-                                        name="price"
-                                        min="0"
-                                        step="0.01"
-                                        placeholder="0.00"
-                                        required
-                                    >
-
-                                </div>
-
-
-                                <small
-                                    class="form-error"
-                                    id="productPriceError"
-                                ></small>
-
-                            </div>
+                        </div>
 
 
 
-                            <!-- Compare At Price -->
+                        <!-- =================================================
+                             BRAND
+                        ================================================== -->
 
-                            <div class="form-group">
+                        <div class="form-group">
 
-                                <label for="productCompareAtPrice">
-                                    Compare At Price
-                                </label>
+                            <label for="productBrand">
+                                Brand
+                            </label>
 
+                            <input
+                                type="text"
+                                id="productBrand"
+                                name="brand"
+                                placeholder="e.g. HIPSTER"
+                                required
+                            >
 
-                                <div class="input-with-prefix">
-
-                                    <span>
-                                        $
-                                    </span>
-
-
-                                    <input
-                                        type="number"
-                                        id="productCompareAtPrice"
-                                        name="compareAtPrice"
-                                        min="0"
-                                        step="0.01"
-                                        placeholder="0.00"
-                                    >
-
-                                </div>
-
-                            </div>
+                        </div>
 
 
 
-                            <!-- SKU -->
+                        <!-- =================================================
+                             CATEGORY
+                        ================================================== -->
 
-                            <div class="form-group">
+                        <div class="form-group">
 
-                                <label for="productSku">
-                                    SKU
-                                </label>
+                            <label for="productCategory">
+                                Category
+                            </label>
+
+                            <select
+                                id="productCategory"
+                                name="category"
+                                required
+                            >
+
+                                <option value="">
+                                    Select category
+                                </option>
+
+                                <!-- Temporary default categories -->
+
+                                <option value="men">
+                                    Men
+                                </option>
+
+                                <option value="women">
+                                    Women
+                                </option>
+
+                            </select>
+
+                        </div>
 
 
-                                <input
-                                    type="text"
-                                    id="productSku"
-                                    name="sku"
-                                    placeholder="e.g. HST-TSH-001"
-                                    required
-                                >
+
+                        <!-- =================================================
+                             SKU
+                        ================================================== -->
+
+                        <div class="form-group">
+
+                            <label for="productSku">
+                                SKU
+                            </label>
+
+                            <input
+                                type="text"
+                                id="productSku"
+                                name="sku"
+                                placeholder="e.g. HST-TSH-001"
+                                required
+                            >
+
+                        </div>
 
 
-                                <small
-                                    class="form-error"
-                                    id="productSkuError"
-                                ></small>
 
-                            </div>
+                        <!-- =================================================
+                             PRICE
+                        ================================================== -->
+
+                        <div class="form-group">
+
+                            <label for="productPrice">
+                                Price
+                            </label>
 
 
+                            <div class="input-prefix">
 
-                            <!-- Stock -->
-
-                            <div class="form-group">
-
-                                <label for="productStock">
-                                    Stock
-                                </label>
+                                <span>
+                                    $
+                                </span>
 
 
                                 <input
                                     type="number"
-                                    id="productStock"
-                                    name="stock"
+                                    id="productPrice"
+                                    name="price"
+                                    placeholder="0.00"
                                     min="0"
-                                    step="1"
-                                    placeholder="0"
+                                    step="0.01"
                                     required
                                 >
 
-
-                                <small
-                                    class="form-error"
-                                    id="productStockError"
-                                ></small>
-
                             </div>
 
-
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- =================================================
-                         SIZES
-                    ================================================== -->
-
-                    <div class="form-section">
-
-
-                        <h3>
-                            Sizes
-                        </h3>
-
-
-                        <div class="size-options">
-
-
-                            <label class="checkbox-option">
-
-                                <input
-                                    type="checkbox"
-                                    name="sizes"
-                                    value="XS"
-                                >
-
-                                <span>
-                                    XS
-                                </span>
-
-                            </label>
-
-
-                            <label class="checkbox-option">
-
-                                <input
-                                    type="checkbox"
-                                    name="sizes"
-                                    value="S"
-                                >
-
-                                <span>
-                                    S
-                                </span>
-
-                            </label>
-
-
-                            <label class="checkbox-option">
-
-                                <input
-                                    type="checkbox"
-                                    name="sizes"
-                                    value="M"
-                                >
-
-                                <span>
-                                    M
-                                </span>
-
-                            </label>
-
-
-                            <label class="checkbox-option">
-
-                                <input
-                                    type="checkbox"
-                                    name="sizes"
-                                    value="L"
-                                >
-
-                                <span>
-                                    L
-                                </span>
-
-                            </label>
-
-
-                            <label class="checkbox-option">
-
-                                <input
-                                    type="checkbox"
-                                    name="sizes"
-                                    value="XL"
-                                >
-
-                                <span>
-                                    XL
-                                </span>
-
-                            </label>
-
-
-                            <label class="checkbox-option">
-
-                                <input
-                                    type="checkbox"
-                                    name="sizes"
-                                    value="XXL"
-                                >
-
-                                <span>
-                                    XXL
-                                </span>
-
-                            </label>
-
-
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- =================================================
-                         COLORS
-                    ================================================== -->
-
-                    <div class="form-section">
-
-
-                        <div class="section-heading-row">
-
-
-                            <div>
-
-                                <h3>
-                                    Colors
-                                </h3>
-
-                                <p>
-                                    Add available product colors.
-                                </p>
-
-                            </div>
-
-
-                            <button
-                                type="button"
-                                class="secondary-button small-button"
-                                id="addColorButton"
-                            >
-
-                                +
-
-                                Add Color
-
-                            </button>
-
-
                         </div>
 
 
-                        <div
-                            class="colors-list"
-                            id="colorsList"
-                        >
 
-                            <!-- Colors generated by products.js -->
-
-                        </div>
-
-
-                    </div>
-
-
-
-                    <!-- =================================================
-                         IMAGES
-                    ================================================== -->
-
-                    <div class="form-section">
-
-
-                        <h3>
-                            Product Images
-                        </h3>
-
+                        <!-- =================================================
+                             COMPARE AT PRICE
+                        ================================================== -->
 
                         <div class="form-group">
 
+                            <label for="productCompareAtPrice">
 
-                            <label for="productImages">
-                                Image URLs
+                                Compare-at Price
+
+                                <span class="optional-label">
+                                    Optional
+                                </span>
+
                             </label>
 
 
-                            <textarea
-                                id="productImages"
-                                name="images"
-                                rows="4"
-                                placeholder="Enter one image URL per line"
-                            ></textarea>
+                            <div class="input-prefix">
+
+                                <span>
+                                    $
+                                </span>
 
 
-                            <small>
-                                Add one image URL per line.
-                            </small>
+                                <input
+                                    type="number"
+                                    id="productCompareAtPrice"
+                                    name="compareAtPrice"
+                                    placeholder="0.00"
+                                    min="0"
+                                    step="0.01"
+                                >
 
+                            </div>
 
                         </div>
 
 
-                    </div>
+
+                        <!-- =================================================
+                             STOCK
+                        ================================================== -->
+
+                        <div class="form-group">
+
+                            <label for="productStock">
+                                Stock Quantity
+                            </label>
+
+                            <input
+                                type="number"
+                                id="productStock"
+                                name="stock"
+                                placeholder="0"
+                                min="0"
+                                step="1"
+                                required
+                            >
+
+                        </div>
 
 
 
-                    <!-- =================================================
-                         SETTINGS
-                    ================================================== -->
+                        <!-- =================================================
+                             FEATURED
+                        ================================================== -->
 
-                    <div class="form-section">
+                        <div class="form-group featured-field">
 
-
-                        <h3>
-                            Product Settings
-                        </h3>
-
-
-                        <div class="settings-options">
+                            <label>
+                                Product Status
+                            </label>
 
 
-                            <label class="checkbox-option checkbox-setting">
+                            <label class="featured-checkbox">
 
                                 <input
                                     type="checkbox"
@@ -1523,28 +1310,23 @@
                                     name="isFeatured"
                                 >
 
-                                <span>
-                                    Featured Product
+
+                                <span class="custom-checkbox"></span>
+
+
+                                <span class="featured-text">
+
+                                    <strong>
+                                        Featured Product
+                                    </strong>
+
+                                    <small>
+                                        Show this product in featured sections.
+                                    </small>
+
                                 </span>
 
                             </label>
-
-
-                            <label class="checkbox-option checkbox-setting">
-
-                                <input
-                                    type="checkbox"
-                                    id="productActive"
-                                    name="isActive"
-                                    checked
-                                >
-
-                                <span>
-                                    Active Product
-                                </span>
-
-                            </label>
-
 
                         </div>
 
@@ -1556,17 +1338,418 @@
 
 
 
-                <!-- Modal Footer -->
+                <!-- =================================================
+                     PRODUCT IMAGES
+                     
+                     MOVED HIGHER SO IT IS EASY TO FIND
+                ================================================== -->
 
-                <div class="modal-footer">
+                <div class="product-form-section">
+
+
+                    <div class="product-form-section-header">
+
+                        <h3>
+                            Product Images
+                        </h3>
+
+                        <p>
+                            Add up to 5 product images for this product.
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="product-image-upload">
+
+
+                        <!-- =================================================
+                             FILE INPUT
+                        ================================================== -->
+
+                        <input
+                            type="file"
+                            id="productImageFiles"
+                            name="productImageFiles"
+                            accept="image/jpeg,image/png,image/webp"
+                            multiple
+                            hidden
+                        >
+
+
+
+                        <!-- =================================================
+                             IMAGE UPLOAD BOX
+                        ================================================== -->
+
+                        <label
+                            for="productImageFiles"
+                            class="image-upload-box"
+                            id="imageUploadBox"
+                        >
+
+
+                            <span class="image-upload-icon">
+                                ↑
+                            </span>
+
+
+                            <strong>
+                                Choose Product Images
+                            </strong>
+
+
+                            <span>
+                                Click to browse from your computer
+                            </span>
+
+
+                            <small>
+                                JPEG, PNG or WEBP
+                                ·
+                                Maximum 5 images
+                                ·
+                                5 MB each
+                            </small>
+
+
+                        </label>
+
+
+
+                        <!-- =================================================
+                             IMAGE UPLOAD STATUS
+                        ================================================== -->
+
+                        <div
+                            class="image-upload-status"
+                            id="imageUploadStatus"
+                            hidden
+                        >
+
+                            <span
+                                class="image-upload-status-icon"
+                                id="imageUploadStatusIcon"
+                            >
+                                ✓
+                            </span>
+
+
+                            <span id="imageUploadStatusText">
+                                Images uploaded successfully.
+                            </span>
+
+                        </div>
+
+
+
+                        <!-- =================================================
+                             IMAGE PREVIEW
+                        ================================================== -->
+
+                        <div
+                            class="product-image-preview"
+                            id="productImagePreview"
+                        ></div>
+
+
+
+                        <!-- =================================================
+                             UPLOADED IMAGE URLS
+                        ================================================== -->
+
+                        <textarea
+                            id="productImages"
+                            name="images"
+                            hidden
+                        ></textarea>
+
+
+                    </div>
+
+
+
+                    <!-- Image Help -->
+
+                    <small class="image-upload-help">
+
+                        You can select multiple images at once.
+                        The images will be uploaded to Cloudinary automatically
+                        when you save the product.
+
+                    </small>
+
+
+                </div>
+
+
+
+                <!-- =================================================
+                     DESCRIPTION
+                ================================================== -->
+
+                <div class="product-form-section">
+
+
+                    <div class="product-form-section-header">
+
+                        <h3>
+                            Description
+                        </h3>
+
+                        <p>
+                            Tell customers about this product.
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="form-group full-width">
+
+
+                        <label for="productDescription">
+                            Product Description
+                        </label>
+
+
+                        <textarea
+                            id="productDescription"
+                            name="description"
+                            rows="5"
+                            placeholder="Write a detailed description of the product..."
+                            required
+                        ></textarea>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- =================================================
+                     SIZES
+                ================================================== -->
+
+                <div class="product-form-section">
+
+
+                    <div class="product-form-section-header">
+
+                        <h3>
+                            Sizes
+                        </h3>
+
+                        <p>
+                            Select the available sizes for this product.
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="size-options">
+
+
+                        <!-- XS -->
+
+                        <label class="size-option">
+
+                            <input
+                                type="checkbox"
+                                name="sizes"
+                                value="XS"
+                            >
+
+                            <span>
+                                XS
+                            </span>
+
+                        </label>
+
+
+
+                        <!-- S -->
+
+                        <label class="size-option">
+
+                            <input
+                                type="checkbox"
+                                name="sizes"
+                                value="S"
+                            >
+
+                            <span>
+                                S
+                            </span>
+
+                        </label>
+
+
+
+                        <!-- M -->
+
+                        <label class="size-option">
+
+                            <input
+                                type="checkbox"
+                                name="sizes"
+                                value="M"
+                            >
+
+                            <span>
+                                M
+                            </span>
+
+                        </label>
+
+
+
+                        <!-- L -->
+
+                        <label class="size-option">
+
+                            <input
+                                type="checkbox"
+                                name="sizes"
+                                value="L"
+                            >
+
+                            <span>
+                                L
+                            </span>
+
+                        </label>
+
+
+
+                        <!-- XL -->
+
+                        <label class="size-option">
+
+                            <input
+                                type="checkbox"
+                                name="sizes"
+                                value="XL"
+                            >
+
+                            <span>
+                                XL
+                            </span>
+
+                        </label>
+
+
+
+                        <!-- XXL -->
+
+                        <label class="size-option">
+
+                            <input
+                                type="checkbox"
+                                name="sizes"
+                                value="XXL"
+                            >
+
+                            <span>
+                                XXL
+                            </span>
+
+                        </label>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- =================================================
+                     COLORS
+                ================================================== -->
+
+                <div class="product-form-section">
+
+
+                    <div class="product-form-section-header color-header">
+
+
+                        <div>
+
+                            <h3>
+                                Colors
+                            </h3>
+
+                            <p>
+                                Add the available colors for this product.
+                            </p>
+
+                        </div>
+
+
+
+                        <button
+                            type="button"
+                            class="secondary-small-button"
+                            id="addColorButton"
+                        >
+
+                            +
+
+                            Add Color
+
+                        </button>
+
+
+                    </div>
+
+
+
+                    <div
+                        id="colorsList"
+                        class="colors-list"
+                    >
+
+                        <!-- Color rows inserted by products.js -->
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- =================================================
+                     FORM ERROR
+                ================================================== -->
+
+                <div
+                    class="product-form-error"
+                    id="productFormError"
+                    hidden
+                ></div>
+
+
+
+                <!-- =================================================
+                     MODAL ACTIONS
+                ================================================== -->
+
+                <div class="product-form-actions">
 
 
                     <button
                         type="button"
-                        class="secondary-button"
+                        class="cancel-button"
                         id="cancelProductButton"
                     >
+
                         Cancel
+
                     </button>
 
 
@@ -1575,7 +1758,9 @@
                         class="primary-button"
                         id="saveProductButton"
                     >
-                        Save Product
+
+                        Add Product
+
                     </button>
 
 
@@ -1611,20 +1796,29 @@
         >
 
 
+            <!-- Delete Icon -->
+
             <div class="confirm-icon">
                 !
             </div>
 
+
+            <!-- Title -->
 
             <h2 id="deleteModalTitle">
                 Delete Product?
             </h2>
 
 
+            <!-- Message -->
+
             <p id="deleteModalMessage">
                 Are you sure you want to delete this product?
             </p>
 
+
+
+            <!-- Actions -->
 
             <div class="confirm-actions">
 
@@ -1634,7 +1828,9 @@
                     class="secondary-button"
                     id="cancelDeleteButton"
                 >
+
                     Cancel
+
                 </button>
 
 
@@ -1643,7 +1839,9 @@
                     class="danger-button"
                     id="confirmDeleteButton"
                 >
+
                     Delete Product
+
                 </button>
 
 
@@ -1668,11 +1866,14 @@
         aria-live="polite"
     >
 
+
         <span
             class="toast-icon"
             id="toastIcon"
         >
+
             ✓
+
         </span>
 
 
@@ -1680,8 +1881,11 @@
             class="toast-message"
             id="toastMessage"
         >
+
             Product saved successfully.
+
         </span>
+
 
     </div>
 

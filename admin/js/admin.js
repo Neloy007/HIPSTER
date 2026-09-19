@@ -218,10 +218,7 @@ function displayAdminInformation(user) {
 
 
     /*
-       These elements are optional.
-
-       If they exist on the page, they will
-       automatically receive the admin information.
+       Update elements using data attributes.
     */
 
     const adminNameElements =
@@ -257,8 +254,8 @@ function displayAdminInformation(user) {
 
 
     /*
-       Also update common profile elements
-       if they already exist in the dashboard.
+       Update common profile elements
+       if they exist.
     */
 
     const profileName =
@@ -316,7 +313,7 @@ function redirectToLogin() {
 
     /*
        Prevent repeatedly redirecting if
-       we are already on the login page.
+       already on login.html.
     */
 
     const currentPage =
@@ -407,7 +404,7 @@ function showAuthenticationError() {
 
 
 /* =========================================================
-   MOBILE SIDEBAR
+   SIDEBAR MENU
 ========================================================= */
 
 function initializeMobileMenu() {
@@ -422,49 +419,294 @@ function initializeMobileMenu() {
             ".sidebar"
         );
 
+    const sidebarOverlay =
+        document.getElementById(
+            "sidebarOverlay"
+        );
+
+
+    /*
+       Stop if the current page does not
+       contain the admin sidebar.
+    */
 
     if (!menuButton || !sidebar) {
         return;
     }
 
 
+    /*
+       Determine whether the page is using
+       the mobile/tablet sidebar behavior.
+    */
+
+    function isMobileSidebar() {
+
+        return window.innerWidth <= 950;
+
+    }
+
+
+    /* =====================================================
+       UPDATE HAMBURGER ARIA STATE
+    ===================================================== */
+
+    function updateMenuState() {
+
+        if (isMobileSidebar()) {
+
+            const isOpen =
+                document.body.classList.contains(
+                    "sidebar-open"
+                );
+
+            menuButton.setAttribute(
+                "aria-expanded",
+                isOpen ? "true" : "false"
+            );
+
+        } else {
+
+            const isCollapsed =
+                document.body.classList.contains(
+                    "sidebar-collapsed"
+                );
+
+            menuButton.setAttribute(
+                "aria-expanded",
+                isCollapsed ? "false" : "true"
+            );
+
+        }
+
+    }
+
+
+    /* =====================================================
+       OPEN MOBILE SIDEBAR
+    ===================================================== */
+
+    function openMobileSidebar() {
+
+        document.body.classList.add(
+            "sidebar-open"
+        );
+
+        updateMenuState();
+
+    }
+
+
+    /* =====================================================
+       CLOSE MOBILE SIDEBAR
+    ===================================================== */
+
+    function closeMobileSidebar() {
+
+        document.body.classList.remove(
+            "sidebar-open"
+        );
+
+        updateMenuState();
+
+    }
+
+
+    /* =====================================================
+       TOGGLE SIDEBAR
+    ===================================================== */
+
+    function toggleSidebar() {
+
+        /*
+           MOBILE / TABLET
+        */
+
+        if (isMobileSidebar()) {
+
+            const isOpen =
+                document.body.classList.contains(
+                    "sidebar-open"
+                );
+
+
+            if (isOpen) {
+
+                closeMobileSidebar();
+
+            } else {
+
+                openMobileSidebar();
+
+            }
+
+
+            return;
+
+        }
+
+
+        /*
+           DESKTOP
+
+           Collapse or expand the sidebar.
+        */
+
+        document.body.classList.toggle(
+            "sidebar-collapsed"
+        );
+
+
+        updateMenuState();
+
+    }
+
+
+    /* =====================================================
+       HAMBURGER CLICK
+    ===================================================== */
+
     menuButton.addEventListener(
         "click",
-        function () {
+        function (event) {
 
-            sidebar.classList.toggle(
-                "open"
+            event.stopPropagation();
+
+            toggleSidebar();
+
+        }
+    );
+
+
+    /* =====================================================
+       OVERLAY CLICK
+    ===================================================== */
+
+    if (sidebarOverlay) {
+
+        sidebarOverlay.addEventListener(
+            "click",
+            function () {
+
+                closeMobileSidebar();
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       CLOSE MOBILE SIDEBAR WITH ESCAPE
+    ===================================================== */
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (event.key !== "Escape") {
+                return;
+            }
+
+
+            if (isMobileSidebar()) {
+
+                closeMobileSidebar();
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       CLOSE MOBILE SIDEBAR AFTER NAVIGATION
+    ===================================================== */
+
+    const navLinks =
+        document.querySelectorAll(
+            ".sidebar .nav-link"
+        );
+
+
+    navLinks.forEach(
+        function (link) {
+
+            link.addEventListener(
+                "click",
+                function () {
+
+                    if (isMobileSidebar()) {
+
+                        closeMobileSidebar();
+
+                    }
+
+                }
             );
 
         }
     );
 
 
-    /*
-       Close sidebar when clicking outside it
-       on smaller screens.
-    */
+    /* =====================================================
+       INITIAL SIDEBAR STATE
+    ===================================================== */
 
-    document.addEventListener(
-        "click",
-        function (event) {
+    if (isMobileSidebar()) {
 
-            const clickedElement =
-                event.target;
+        document.body.classList.remove(
+            "sidebar-collapsed"
+        );
+
+        document.body.classList.remove(
+            "sidebar-open"
+        );
+
+    }
 
 
-            if (
-                window.innerWidth <= 950 &&
-                sidebar.classList.contains("open") &&
-                !sidebar.contains(clickedElement) &&
-                !menuButton.contains(clickedElement)
-            ) {
+    updateMenuState();
 
-                sidebar.classList.remove(
-                    "open"
+
+    /* =====================================================
+       WINDOW RESIZE
+    ===================================================== */
+
+    window.addEventListener(
+        "resize",
+        function () {
+
+            if (isMobileSidebar()) {
+
+                /*
+                   Desktop collapse state should
+                   not affect mobile.
+                */
+
+                document.body.classList.remove(
+                    "sidebar-collapsed"
+                );
+
+                document.body.classList.remove(
+                    "sidebar-open"
+                );
+
+            } else {
+
+                /*
+                   Remove mobile state when
+                   returning to desktop.
+                */
+
+                document.body.classList.remove(
+                    "sidebar-open"
                 );
 
             }
+
+
+            updateMenuState();
 
         }
     );
@@ -563,7 +805,7 @@ function initializeAdminSearch() {
                Dashboard search will later be connected
                to products, customers and orders.
 
-               For now, this simply searches visible
+               For now, this searches visible
                dashboard text.
             */
 
@@ -905,44 +1147,6 @@ function initializeActiveNavigation() {
     );
 
 }
-
-
-/* =========================================================
-   WINDOW RESIZE
-========================================================= */
-
-window.addEventListener(
-    "resize",
-    function () {
-
-        const sidebar =
-            document.querySelector(
-                ".sidebar"
-            );
-
-
-        if (!sidebar) {
-            return;
-        }
-
-
-        /*
-           Automatically close mobile sidebar
-           when returning to desktop size.
-        */
-
-        if (
-            window.innerWidth > 950
-        ) {
-
-            sidebar.classList.remove(
-                "open"
-            );
-
-        }
-
-    }
-);
 
 
 /* =========================================================

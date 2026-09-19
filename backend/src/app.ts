@@ -1,10 +1,16 @@
 import express from "express";
+
 import cors from "cors";
+
 import helmet from "helmet";
 
 import authRoutes from "./routes/authRoutes";
+
 import categoryRoutes from "./routes/categoryRoutes";
+
 import productRoutes from "./routes/productRoutes";
+
+import uploadRoutes from "./routes/uploadRoutes";
 
 const app = express();
 
@@ -50,5 +56,11 @@ app.use("/api/categories", categoryRoutes);
 ========================================================= */
 
 app.use("/api/products", productRoutes);
+
+/* =========================================================
+   UPLOAD ROUTES
+========================================================= */
+
+app.use("/api/upload", uploadRoutes);
 
 export default app;
