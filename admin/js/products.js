@@ -782,69 +782,49 @@ async function loadCategories() {
 }
 
 
+
 /* =========================================================
    POPULATE CATEGORY SELECTS
 ========================================================= */
 
 function populateCategorySelects() {
 
+    // Category filter
     if (categoryFilter) {
 
         categoryFilter.innerHTML = `
-            <option value="">
-                All Categories
-            </option>
+            <option value="">All Categories</option>
         `;
 
-        categories.forEach(
-            (category) => {
+        categories.forEach((category) => {
 
-                const option =
-                    document.createElement("option");
+            const option = document.createElement("option");
 
-                option.value =
-                    category._id;
+            option.value = category._id;
+            option.textContent = category.name;
 
-                option.textContent =
-                    category.name;
-
-                categoryFilter.appendChild(
-                    option
-                );
-            }
-        );
+            categoryFilter.appendChild(option);
+        });
     }
 
+
+    // Add/Edit Product category dropdown
     if (productCategory) {
 
         productCategory.innerHTML = `
-            <option value="">
-                Select category
-            </option>
+            <option value="">Select category</option>
         `;
 
-        categories.forEach(
-            (category) => {
+        categories.forEach((category) => {
 
-                const option =
-                    document.createElement("option");
+            const option = document.createElement("option");
 
-                /*
-                 * IMPORTANT:
-                 * The value must be the MongoDB
-                 * Category ID.
-                 */
-                option.value =
-                    category._id;
+            // Use the MongoDB category ID
+            option.value = category._id;
+            option.textContent = category.name;
 
-                option.textContent =
-                    category.name;
-
-                productCategory.appendChild(
-                    option
-                );
-            }
-        );
+            productCategory.appendChild(option);
+        });
     }
 }
 
