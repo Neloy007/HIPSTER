@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Create an Account | HIPSTER</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <style>
+
+        /* =====================================================
+           REGISTER PAGE
+        ===================================================== */
+
+        .auth-page {
+
+            min-height: 100vh;
+
+            background: #ffffff;
+
+        }
+
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+
+        .auth-header {
+
+            height: 80px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-bottom: 1px solid #e5e5e5;
+
+        }
+
+
+        .auth-logo {
+
+            color: #111111;
+
+            text-decoration: none;
+
+            font-size: 28px;
+
+            font-weight: 800;
+
+            letter-spacing: -1px;
+
+        }
+
+
+        /* =====================================================
+           CONTENT
+        ===================================================== */
+
+        .auth-content {
+
+            max-width: 480px;
+
+            margin: 0 auto;
+
+            padding: 70px 25px;
+
+        }
+
+
+        .auth-box {
+
+            width: 100%;
+
+        }
+
+
+        .auth-title {
+
+            margin: 0 0 10px;
+
+            color: #111111;
+
+            font-size: 30px;
+
+            font-weight: 700;
+
+            text-align: center;
+
+        }
+
+
+        .auth-subtitle {
+
+            margin: 0 0 40px;
+
+            color: #666666;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+
+            text-align: center;
+
+        }
+
+
+        /* =====================================================
+           FORM
+        ===================================================== */
+
+        .auth-form {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 20px;
+
+        }
+
+
+        .auth-field {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 8px;
+
+        }
+
+
+        .auth-field label {
+
+            color: #111111;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+        }
+
+
+        .auth-field input {
+
+            width: 100%;
+
+            height: 48px;
+
+            padding: 0 14px;
+
+            border: 1px solid #cccccc;
+
+            background: #ffffff;
+
+            color: #111111;
+
+            font-size: 14px;
+
+            box-sizing: border-box;
+
+            outline: none;
+
+        }
+
+
+        .auth-field input:focus {
+
+            border-color: #111111;
+
+        }
+
+
+        .auth-field input::placeholder {
+
+            color: #999999;
+
+        }
+
+
+        /* =====================================================
+           PASSWORD HELP
+        ===================================================== */
+
+        .password-help {
+
+            margin-top: -8px;
+
+            color: #777777;
+
+            font-size: 11px;
+
+            line-height: 1.5;
+
+        }
+
+
+        /* =====================================================
+           REGISTER BUTTON
+        ===================================================== */
+
+        .auth-button {
+
+            width: 100%;
+
+            min-height: 50px;
+
+            margin-top: 5px;
+
+            border: none;
+
+            background: #111111;
+
+            color: #ffffff;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            letter-spacing: 0.5px;
+
+            cursor: pointer;
+
+        }
+
+
+        .auth-button:hover {
+
+            background: #333333;
+
+        }
+
+
+        .auth-button:disabled {
+
+            opacity: 0.6;
+
+            cursor: not-allowed;
+
+        }
+
+
+        /* =====================================================
+           MESSAGE
+        ===================================================== */
+
+        .auth-message {
+
+            display: none;
+
+            margin-top: 5px;
+
+            padding: 13px 15px;
+
+            font-size: 13px;
+
+            line-height: 1.5;
+
+        }
+
+
+        .auth-message.show {
+
+            display: block;
+
+        }
+
+
+        .auth-message.error {
+
+            background: #fff1f1;
+
+            color: #b00020;
+
+            border: 1px solid #f0caca;
+
+        }
+
+
+        .auth-message.success {
+
+            background: #f1fff4;
+
+            color: #176b2c;
+
+            border: 1px solid #c8e8d0;
+
+        }
+
+
+        /* =====================================================
+           LOGIN LINK
+        ===================================================== */
+
+        .auth-switch {
+
+            margin-top: 30px;
+
+            text-align: center;
+
+            color: #666666;
+
+            font-size: 13px;
+
+        }
+
+
+        .auth-switch a {
+
+            color: #111111;
+
+            font-weight: 700;
+
+            text-decoration: none;
+
+        }
+
+
+        .auth-switch a:hover {
+
+            text-decoration: underline;
+
+        }
+
+
+        /* =====================================================
+           BACK TO STORE
+        ===================================================== */
+
+        .back-to-store {
+
+            display: block;
+
+            margin-top: 25px;
+
+            color: #666666;
+
+            font-size: 12px;
+
+            text-align: center;
+
+            text-decoration: none;
+
+        }
+
+
+        .back-to-store:hover {
+
+            color: #111111;
+
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 600px) {
+
+            .auth-content {
+
+                padding: 50px 20px;
+
+            }
+
+
+            .auth-title {
+
+                font-size: 27px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <div class="auth-page">
+
+
+        <!-- =================================================
+             HEADER
+        ================================================== -->
+
+        <header class="auth-header">
+
+            <a
+                href="index.html"
+                class="auth-logo"
+            >
+                HIPSTER
+            </a>
+
+        </header>
+
+
+        <!-- =================================================
+             CONTENT
+        ================================================== -->
+
+        <main class="auth-content">
+
+            <div class="auth-box">
+
+
+                <h1 class="auth-title">
+                    Create an Account
+                </h1>
+
+
+                <p class="auth-subtitle">
+                    Join HIPSTER and start shopping your
+                    favourite styles.
+                </p>
+
+
+                <!-- =================================================
+                     REGISTER FORM
+                ================================================== -->
+
+                <form
+                    id="registerForm"
+                    class="auth-form"
+                >
+
+
+                    <!-- NAME -->
+
+                    <div class="auth-field">
+
+                        <label for="registerName">
+                            Full Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="registerName"
+                            name="name"
+                            placeholder="Enter your full name"
+                            autocomplete="name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- EMAIL -->
+
+                    <div class="auth-field">
+
+                        <label for="registerEmail">
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="registerEmail"
+                            name="email"
+                            placeholder="Enter your email address"
+                            autocomplete="email"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- PASSWORD -->
+
+                    <div class="auth-field">
+
+                        <label for="registerPassword">
+                            Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="registerPassword"
+                            name="password"
+                            placeholder="Create a password"
+                            autocomplete="new-password"
+                            required
+                        >
+
+                    </div>
+
+
+                    <p class="password-help">
+                        Use a strong password with at least
+                        6 characters.
+                    </p>
+
+
+                    <!-- CONFIRM PASSWORD -->
+
+                    <div class="auth-field">
+
+                        <label for="registerConfirmPassword">
+                            Confirm Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="registerConfirmPassword"
+                            name="confirmPassword"
+                            placeholder="Enter your password again"
+                            autocomplete="new-password"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- MESSAGE -->
+
+                    <div
+                        id="registerMessage"
+                        class="auth-message"
+                    ></div>
+
+
+                    <!-- BUTTON -->
+
+                    <button
+                        type="submit"
+                        id="registerButton"
+                        class="auth-button"
+                    >
+                        CREATE ACCOUNT
+                    </button>
+
+
+                </form>
+
+
+                <!-- =================================================
+                     LOGIN
+                ================================================== -->
+
+                <div class="auth-switch">
+
+                    Already have an account?
+
+                    <a href="login.html">
+                        Sign in
+                    </a>
+
+                </div>
+
+
+                <!-- =================================================
+                     STORE
+                ================================================== -->
+
+                <a
+                    href="index.html"
+                    class="back-to-store"
+                >
+                    ← Back to Store
+                </a>
+
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="js/api.js"></script>
+
+    <script src="js/register.js"></script>
+
+</body>
+
+</html>

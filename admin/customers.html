@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>HIPSTER | Customers</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/customers.css"
+    >
+
+</head>
+
+<body>
+
+    <!-- =====================================================
+         ADMIN LAYOUT
+    ====================================================== -->
+
+    <div class="admin-layout">
+
+
+        <!-- =================================================
+             SIDEBAR
+        ================================================== -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-logo">
+                HIPSTER
+            </div>
+
+
+            <nav class="sidebar-nav">
+
+                <a
+                    href="dashboard.html"
+                    class="nav-item"
+                >
+                    Dashboard
+                </a>
+
+
+                <a
+                    href="customers.html"
+                    class="nav-item active"
+                >
+                    Customers
+                </a>
+
+
+                <a
+                    href="products.html"
+                    class="nav-item"
+                >
+                    Products
+                </a>
+
+
+                <a
+                    href="categories.html"
+                    class="nav-item"
+                >
+                    Categories
+                </a>
+
+
+                <a
+                    href="orders.html"
+                    class="nav-item"
+                >
+                    Orders
+                </a>
+
+            </nav>
+
+
+            <!-- SIDEBAR BOTTOM -->
+
+            <div class="sidebar-bottom">
+
+                <a
+                    href="../index.html"
+                    class="nav-item"
+                >
+                    View Store
+                </a>
+
+
+                <button
+                    type="button"
+                    id="logoutButton"
+                    class="logout-button"
+                >
+                    Logout
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =================================================
+             MAIN CONTENT
+        ================================================== -->
+
+        <main class="main-content">
+
+
+            <!-- =================================================
+                 TOP BAR
+            ================================================== -->
+
+            <header class="topbar">
+
+                <div>
+
+                    <p class="topbar-label">
+                        ADMIN PANEL
+                    </p>
+
+                    <h1>
+                        Customers
+                    </h1>
+
+                </div>
+
+
+                <div class="admin-profile">
+
+                    <div class="profile-avatar">
+                        A
+                    </div>
+
+
+                    <div class="profile-info">
+
+                        <strong>
+                            Administrator
+                        </strong>
+
+                        <span>
+                            Admin
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- =================================================
+                 PAGE CONTENT
+            ================================================== -->
+
+            <section class="content">
+
+
+                <!-- PAGE HEADER -->
+
+                <div class="page-header">
+
+                    <div>
+
+                        <h2>
+                            Customer Management
+                        </h2>
+
+                        <p>
+                            View and manage HIPSTER customers.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     STAT CARDS
+                ================================================== -->
+
+                <div class="stats-grid">
+
+
+                    <!-- TOTAL -->
+
+                    <div class="stat-card">
+
+                        <span class="stat-label">
+                            Total Customers
+                        </span>
+
+                        <strong
+                            id="totalCustomers"
+                            class="stat-value"
+                        >
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <!-- ACTIVE -->
+
+                    <div class="stat-card">
+
+                        <span class="stat-label">
+                            Active Customers
+                        </span>
+
+                        <strong
+                            id="activeCustomers"
+                            class="stat-value"
+                        >
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <!-- INACTIVE -->
+
+                    <div class="stat-card">
+
+                        <span class="stat-label">
+                            Inactive Customers
+                        </span>
+
+                        <strong
+                            id="inactiveCustomers"
+                            class="stat-value"
+                        >
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     CUSTOMER TABLE
+                ================================================== -->
+
+                <div class="table-card">
+
+
+                    <!-- TABLE HEADER -->
+
+                    <div class="table-header">
+
+                        <div>
+
+                            <h3>
+                                Customers
+                            </h3>
+
+                            <p>
+                                Registered customer accounts
+                            </p>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            id="refreshButton"
+                            class="refresh-button"
+                        >
+                            Refresh
+                        </button>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         LOADING STATE
+                    ================================================== -->
+
+                    <div
+                        id="loadingState"
+                        class="table-message"
+                    >
+                        Loading customers...
+                    </div>
+
+
+                    <!-- =================================================
+                         ERROR STATE
+                    ================================================== -->
+
+                    <div
+                        id="errorState"
+                        class="table-message error-message"
+                        style="display: none;"
+                    >
+                        Unable to load customers.
+                    </div>
+
+
+                    <!-- =================================================
+                         EMPTY STATE
+                    ================================================== -->
+
+                    <div
+                        id="emptyState"
+                        class="table-message"
+                        style="display: none;"
+                    >
+                        No customers found.
+                    </div>
+
+
+                    <!-- =================================================
+                         CUSTOMER TABLE
+                    ================================================== -->
+
+                    <div
+                        id="tableWrapper"
+                        class="table-wrapper"
+                        style="display: none;"
+                    >
+
+                        <table>
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>
+                                        Customer
+                                    </th>
+
+                                    <th>
+                                        Email
+                                    </th>
+
+                                    <th>
+                                        Role
+                                    </th>
+
+                                    <th>
+                                        Status
+                                    </th>
+
+                                    <th>
+                                        Joined
+                                    </th>
+
+                                    <th>
+                                        Action
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="customersTableBody">
+
+                                <!--
+                                    Customers will be
+                                    inserted by customers.js
+                                -->
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script
+        src="../js/customers.js"
+    ></script>
+
+</body>
+
+</html>
+

@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>My Account | HIPSTER</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <style>
+
+        /* =====================================================
+           ACCOUNT PAGE
+        ===================================================== */
+
+        .account-page {
+
+            min-height: 100vh;
+
+            background: #ffffff;
+
+        }
+
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+
+        .account-header {
+
+            height: 80px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 40px;
+
+            border-bottom: 1px solid #e5e5e5;
+
+        }
+
+
+        .account-logo {
+
+            color: #111111;
+
+            text-decoration: none;
+
+            font-size: 28px;
+
+            font-weight: 800;
+
+            letter-spacing: -1px;
+
+        }
+
+
+        .back-to-store {
+
+            color: #111111;
+
+            text-decoration: none;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            text-transform: uppercase;
+
+        }
+
+
+        .back-to-store:hover {
+
+            text-decoration: underline;
+
+        }
+
+
+        /* =====================================================
+           CONTENT
+        ===================================================== */
+
+        .account-content {
+
+            max-width: 900px;
+
+            margin: 0 auto;
+
+            padding: 70px 30px;
+
+        }
+
+
+        .account-title {
+
+            margin: 0 0 10px;
+
+            font-size: 32px;
+
+            font-weight: 700;
+
+            color: #111111;
+
+        }
+
+
+        .account-subtitle {
+
+            margin: 0 0 40px;
+
+            color: #666666;
+
+            font-size: 14px;
+
+        }
+
+
+        /* =====================================================
+           ACCOUNT CARD
+        ===================================================== */
+
+        .account-card {
+
+            border: 1px solid #e5e5e5;
+
+            padding: 35px;
+
+            background: #ffffff;
+
+        }
+
+
+        .account-card-title {
+
+            margin: 0 0 25px;
+
+            font-size: 18px;
+
+            font-weight: 700;
+
+            color: #111111;
+
+        }
+
+
+        .account-info {
+
+            display: grid;
+
+            gap: 20px;
+
+        }
+
+
+        .account-info-row {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 6px;
+
+            padding-bottom: 18px;
+
+            border-bottom: 1px solid #eeeeee;
+
+        }
+
+
+        .account-info-label {
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.5px;
+
+            color: #777777;
+
+        }
+
+
+        .account-info-value {
+
+            font-size: 15px;
+
+            color: #111111;
+
+        }
+
+
+        /* =====================================================
+           LOGOUT
+        ===================================================== */
+
+        .account-actions {
+
+            margin-top: 35px;
+
+        }
+
+
+        .logout-button {
+
+            width: 100%;
+
+            min-height: 48px;
+
+            border: none;
+
+            background: #111111;
+
+            color: #ffffff;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            letter-spacing: 0.5px;
+
+            cursor: pointer;
+
+        }
+
+
+        .logout-button:hover {
+
+            background: #333333;
+
+        }
+
+
+        /* =====================================================
+           LOADING
+        ===================================================== */
+
+        .account-loading {
+
+            padding: 60px 0;
+
+            text-align: center;
+
+            color: #666666;
+
+            font-size: 14px;
+
+        }
+
+
+        /* =====================================================
+           ERROR
+        ===================================================== */
+
+        .account-error {
+
+            padding: 30px;
+
+            border: 1px solid #e5e5e5;
+
+            color: #666666;
+
+            font-size: 14px;
+
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 600px) {
+
+            .account-header {
+
+                padding: 0 20px;
+
+            }
+
+
+            .account-content {
+
+                padding: 50px 20px;
+
+            }
+
+
+            .account-card {
+
+                padding: 25px;
+
+            }
+
+
+            .account-title {
+
+                font-size: 27px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <div class="account-page">
+
+
+        <!-- =================================================
+             HEADER
+        ================================================== -->
+
+        <header class="account-header">
+
+            <a
+                href="index.html"
+                class="account-logo"
+            >
+                HIPSTER
+            </a>
+
+
+            <a
+                href="index.html"
+                class="back-to-store"
+            >
+                Back to Store
+            </a>
+
+        </header>
+
+
+        <!-- =================================================
+             ACCOUNT CONTENT
+        ================================================== -->
+
+        <main class="account-content">
+
+            <h1 class="account-title">
+                My Account
+            </h1>
+
+
+            <p class="account-subtitle">
+                Manage your HIPSTER account.
+            </p>
+
+
+            <!-- LOADING -->
+
+            <div
+                class="account-loading"
+                id="accountLoading"
+            >
+
+                Loading account...
+
+            </div>
+
+
+            <!-- ERROR -->
+
+            <div
+                class="account-error"
+                id="accountError"
+                hidden
+            >
+
+                Unable to load your account.
+
+            </div>
+
+
+            <!-- ACCOUNT CARD -->
+
+            <section
+                class="account-card"
+                id="accountCard"
+                hidden
+            >
+
+                <h2 class="account-card-title">
+                    Account Information
+                </h2>
+
+
+                <div class="account-info">
+
+
+                    <div class="account-info-row">
+
+                        <span class="account-info-label">
+                            Name
+                        </span>
+
+                        <span
+                            class="account-info-value"
+                            id="accountName"
+                        >
+                            -
+                        </span>
+
+                    </div>
+
+
+                    <div class="account-info-row">
+
+                        <span class="account-info-label">
+                            Email
+                        </span>
+
+                        <span
+                            class="account-info-value"
+                            id="accountEmail"
+                        >
+                            -
+                        </span>
+
+                    </div>
+
+
+                    <div class="account-info-row">
+
+                        <span class="account-info-label">
+                            Account Type
+                        </span>
+
+                        <span
+                            class="account-info-value"
+                            id="accountRole"
+                        >
+                            -
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- LOGOUT -->
+
+                <div class="account-actions">
+
+                    <button
+                        type="button"
+                        class="logout-button"
+                        id="logoutButton"
+                    >
+                        LOG OUT
+                    </button>
+
+                </div>
+
+            </section>
+
+
+        </main>
+
+    </div>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="js/api.js"></script>
+
+    <script src="js/account.js"></script>
+
+</body>
+
+</html>

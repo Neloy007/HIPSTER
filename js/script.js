@@ -11,9 +11,13 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     initializeSliders();
+
     initializeSearch();
+
     initializeHeaderButtons();
+
     initializeNewsletter();
+
     initializeNavigation();
 
 });
@@ -25,49 +29,82 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function initializeSliders() {
 
-    const sliderButtons = document.querySelectorAll(".slider-arrow");
+    const sliderButtons =
+        document.querySelectorAll(".slider-arrow");
+
 
     sliderButtons.forEach(function (button) {
 
-        button.addEventListener("click", function () {
+        button.addEventListener(
+            "click",
+            function () {
 
-            const sliderId = button.dataset.slider;
-            const direction = button.dataset.direction;
+                const sliderId =
+                    button.dataset.slider;
 
-            const slider = document.getElementById(sliderId);
+                const direction =
+                    button.dataset.direction;
 
-            if (!slider) {
-                return;
+
+                const slider =
+                    document.getElementById(
+                        sliderId
+                    );
+
+
+                if (!slider) {
+
+                    return;
+
+                }
+
+
+                /*
+                 * Move approximately one product
+                 * card at a time.
+                 */
+
+                const card =
+                    slider.querySelector(
+                        ".product-card"
+                    );
+
+
+                if (!card) {
+
+                    return;
+
+                }
+
+
+                const cardWidth =
+                    card.offsetWidth;
+
+
+                if (direction === "next") {
+
+                    slider.scrollBy({
+
+                        left: cardWidth,
+
+                        behavior: "smooth"
+
+                    });
+
+                } else {
+
+                    slider.scrollBy({
+
+                        left: -cardWidth,
+
+                        behavior: "smooth"
+
+                    });
+
+                }
+
             }
-
-            /*
-             * Move approximately one product card at a time.
-             */
-            const card = slider.querySelector(".product-card");
-
-            if (!card) {
-                return;
-            }
-
-            const cardWidth = card.offsetWidth;
-
-            if (direction === "next") {
-
-                slider.scrollBy({
-                    left: cardWidth,
-                    behavior: "smooth"
-                });
-
-            } else {
-
-                slider.scrollBy({
-                    left: -cardWidth,
-                    behavior: "smooth"
-                });
-
-            }
-
-        });
+        );
 
     });
 
@@ -81,6 +118,7 @@ function initializeSliders() {
         "latestDots"
     );
 
+
     initializeSliderDots(
         "shirtProducts",
         "shirtDots"
@@ -93,68 +131,127 @@ function initializeSliders() {
    SLIDER DOTS
 ========================================================= */
 
-function initializeSliderDots(sliderId, dotsId) {
+function initializeSliderDots(
+    sliderId,
+    dotsId
+) {
 
-    const slider = document.getElementById(sliderId);
-    const dotsContainer = document.getElementById(dotsId);
-
-    if (!slider || !dotsContainer) {
-        return;
-    }
-
-    const dots = dotsContainer.querySelectorAll(".slider-dot");
-
-    slider.addEventListener("scroll", function () {
-
-        const maxScroll =
-            slider.scrollWidth - slider.clientWidth;
-
-        if (maxScroll <= 0) {
-            return;
-        }
-
-        const scrollPercentage =
-            slider.scrollLeft / maxScroll;
-
-        const activeIndex = Math.min(
-            dots.length - 1,
-            Math.floor(scrollPercentage * dots.length)
+    const slider =
+        document.getElementById(
+            sliderId
         );
 
-        dots.forEach(function (dot, index) {
 
-            dot.classList.toggle(
-                "active",
-                index === activeIndex
+    const dotsContainer =
+        document.getElementById(
+            dotsId
+        );
+
+
+    if (!slider || !dotsContainer) {
+
+        return;
+
+    }
+
+
+    const dots =
+        dotsContainer.querySelectorAll(
+            ".slider-dot"
+        );
+
+
+    slider.addEventListener(
+        "scroll",
+        function () {
+
+            const maxScroll =
+                slider.scrollWidth -
+                slider.clientWidth;
+
+
+            if (maxScroll <= 0) {
+
+                return;
+
+            }
+
+
+            const scrollPercentage =
+                slider.scrollLeft /
+                maxScroll;
+
+
+            const activeIndex =
+                Math.min(
+                    dots.length - 1,
+                    Math.floor(
+                        scrollPercentage *
+                        dots.length
+                    )
+                );
+
+
+            dots.forEach(
+                function (
+                    dot,
+                    index
+                ) {
+
+                    dot.classList.toggle(
+                        "active",
+                        index === activeIndex
+                    );
+
+                }
             );
 
-        });
-
-    });
+        }
+    );
 
 
     /*
      * Clicking dots.
      */
 
-    dots.forEach(function (dot, index) {
+    dots.forEach(
+        function (
+            dot,
+            index
+        ) {
 
-        dot.addEventListener("click", function () {
+            dot.addEventListener(
+                "click",
+                function () {
 
-            const maxScroll =
-                slider.scrollWidth - slider.clientWidth;
+                    const maxScroll =
+                        slider.scrollWidth -
+                        slider.clientWidth;
 
-            const targetPosition =
-                maxScroll * (index / (dots.length - 1));
 
-            slider.scrollTo({
-                left: targetPosition,
-                behavior: "smooth"
-            });
+                    const targetPosition =
+                        maxScroll *
+                        (
+                            index /
+                            (dots.length - 1)
+                        );
 
-        });
 
-    });
+                    slider.scrollTo({
+
+                        left:
+                            targetPosition,
+
+                        behavior:
+                            "smooth"
+
+                    });
+
+                }
+            );
+
+        }
+    );
 
 }
 
@@ -166,13 +263,21 @@ function initializeSliderDots(sliderId, dotsId) {
 function initializeSearch() {
 
     const searchInput =
-        document.getElementById("searchInput");
+        document.getElementById(
+            "searchInput"
+        );
+
 
     const searchButton =
-        document.getElementById("searchButton");
+        document.getElementById(
+            "searchButton"
+        );
+
 
     if (!searchInput || !searchButton) {
+
         return;
+
     }
 
 
@@ -180,28 +285,39 @@ function initializeSearch() {
      * Search button.
      */
 
-    searchButton.addEventListener("click", function () {
+    searchButton.addEventListener(
+        "click",
+        function () {
 
-        performSearch(searchInput.value);
+            performSearch(
+                searchInput.value
+            );
 
-    });
+        }
+    );
 
 
     /*
      * Press Enter to search.
      */
 
-    searchInput.addEventListener("keydown", function (event) {
+    searchInput.addEventListener(
+        "keydown",
+        function (event) {
 
-        if (event.key === "Enter") {
+            if (event.key === "Enter") {
 
-            event.preventDefault();
+                event.preventDefault();
 
-            performSearch(searchInput.value);
+
+                performSearch(
+                    searchInput.value
+                );
+
+            }
 
         }
-
-    });
+    );
 
 }
 
@@ -215,55 +331,75 @@ function performSearch(query) {
     const searchTerm =
         query.trim().toLowerCase();
 
+
     if (searchTerm === "") {
 
-        alert("Please enter a product or brand to search.");
+        alert(
+            "Please enter a product or brand to search."
+        );
 
         return;
+
     }
 
 
     const products =
-        document.querySelectorAll(".product-card");
+        document.querySelectorAll(
+            ".product-card"
+        );
+
 
     let foundProducts = 0;
 
 
-    products.forEach(function (product) {
+    products.forEach(
+        function (product) {
 
-        const productName =
-            product
-                .querySelector("h3")
-                ?.textContent
-                .toLowerCase() || "";
+            const productName =
+                product
+                    .querySelector("h3")
+                    ?.textContent
+                    .toLowerCase() || "";
 
-        if (productName.includes(searchTerm)) {
 
-            product.style.display = "";
+            if (
+                productName.includes(
+                    searchTerm
+                )
+            ) {
 
-            foundProducts++;
+                product.style.display =
+                    "";
 
-        } else {
+                foundProducts++;
 
-            product.style.display = "none";
+            } else {
+
+                product.style.display =
+                    "none";
+
+            }
 
         }
-
-    });
+    );
 
 
     /*
-     * If no product is found, restore the products
-     * and show a message.
+     * If no product is found,
+     * restore the products and show a message.
      */
 
     if (foundProducts === 0) {
 
-        products.forEach(function (product) {
+        products.forEach(
+            function (product) {
 
-            product.style.display = "";
+                product.style.display =
+                    "";
 
-        });
+            }
+        );
+
 
         alert(
             `No products found for "${query}".`
@@ -277,32 +413,68 @@ function performSearch(query) {
 /* =========================================================
    HEADER BUTTONS
 ========================================================= */
-
 function initializeHeaderButtons() {
 
     const accountButton =
-        document.getElementById("accountButton");
+        document.getElementById(
+            "accountButton"
+        );
 
     const wishlistButton =
-        document.getElementById("wishlistButton");
+        document.getElementById(
+            "wishlistButton"
+        );
 
-    const bagButton =
-        document.getElementById("bagButton");
+    const cartButton =
+        document.getElementById(
+            "bagButton"
+        );
 
 
-    /*
-     * Account
-     */
+    /* =====================================================
+       ACCOUNT
+    ===================================================== */
 
     if (accountButton) {
 
+        updateAccountButton(
+            accountButton
+        );
+
+
         accountButton.addEventListener(
             "click",
-            function () {
+            async function () {
 
-                alert(
-                    "Account feature coming soon."
-                );
+                try {
+
+                    const customer =
+                        await getCurrentCustomer();
+
+
+                    if (customer) {
+
+                        window.location.href =
+                            "account.html";
+
+                    } else {
+
+                        window.location.href =
+                            "login.html";
+
+                    }
+
+                } catch (error) {
+
+                    console.error(
+                        "Account check failed:",
+                        error
+                    );
+
+                    window.location.href =
+                        "login.html";
+
+                }
 
             }
         );
@@ -310,9 +482,9 @@ function initializeHeaderButtons() {
     }
 
 
-    /*
-     * Wishlist
-     */
+    /* =====================================================
+       WISHLIST
+    ===================================================== */
 
     if (wishlistButton) {
 
@@ -321,7 +493,7 @@ function initializeHeaderButtons() {
             function () {
 
                 alert(
-                    "Your wishlist is currently empty."
+                    "Wishlist feature coming soon."
                 );
 
             }
@@ -330,21 +502,81 @@ function initializeHeaderButtons() {
     }
 
 
-    /*
-     * Shopping Bag
-     */
+    /* =====================================================
+       CART
+    ===================================================== */
 
-    if (bagButton) {
+    if (cartButton) {
 
-        bagButton.addEventListener(
+        cartButton.addEventListener(
             "click",
             function () {
 
                 alert(
-                    "Your shopping bag is empty."
+                    "Shopping cart feature coming soon."
                 );
 
             }
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   UPDATE ACCOUNT BUTTON
+========================================================= */
+
+async function updateAccountButton(
+    accountButton
+) {
+
+    try {
+
+        const customer =
+            await getCurrentCustomer();
+
+
+        if (customer) {
+
+            const customerName =
+                customer.name ||
+                customer.email ||
+                "Account";
+
+
+            accountButton.setAttribute(
+                "title",
+                `Signed in as ${customerName}`
+            );
+
+
+            accountButton.setAttribute(
+                "aria-label",
+                `Account: ${customerName}`
+            );
+
+        } else {
+
+            accountButton.setAttribute(
+                "title",
+                "Sign in"
+            );
+
+
+            accountButton.setAttribute(
+                "aria-label",
+                "Sign in"
+            );
+
+        }
+
+    } catch (error) {
+
+        console.error(
+            "Unable to update account button:",
+            error
         );
 
     }
@@ -359,14 +591,21 @@ function initializeHeaderButtons() {
 function initializeNewsletter() {
 
     const newsletterForm =
-        document.getElementById("newsletterForm");
+        document.getElementById(
+            "newsletterForm"
+        );
+
 
     const emailInput =
-        document.getElementById("emailInput");
+        document.getElementById(
+            "emailInput"
+        );
 
 
     if (!newsletterForm || !emailInput) {
+
         return;
+
     }
 
 
@@ -388,6 +627,7 @@ function initializeNewsletter() {
                 );
 
                 return;
+
             }
 
 
@@ -399,13 +639,18 @@ function initializeNewsletter() {
                 /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 
-            if (!emailPattern.test(email)) {
+            if (
+                !emailPattern.test(
+                    email
+                )
+            ) {
 
                 alert(
                     "Please enter a valid email address."
                 );
 
                 return;
+
             }
 
 
@@ -438,43 +683,49 @@ function initializeNavigation() {
         );
 
 
-    navigationLinks.forEach(function (link) {
+    navigationLinks.forEach(
+        function (link) {
 
-        link.addEventListener(
-            "click",
-            function () {
+            link.addEventListener(
+                "click",
+                function () {
 
-                /*
-                 * Gender navigation
-                 */
+                    /*
+                     * Gender navigation.
+                     */
 
-                if (
-                    link.classList.contains(
-                        "gender-link"
-                    )
-                ) {
-
-                    document
-                        .querySelectorAll(
-                            ".gender-link"
+                    if (
+                        link.classList.contains(
+                            "gender-link"
                         )
-                        .forEach(function (item) {
+                    ) {
 
-                            item.classList.remove(
-                                "active"
+                        document
+                            .querySelectorAll(
+                                ".gender-link"
+                            )
+                            .forEach(
+                                function (item) {
+
+                                    item.classList.remove(
+                                        "active"
+                                    );
+
+                                }
                             );
 
-                        });
 
+                        link.classList.add(
+                            "active"
+                        );
 
-                    link.classList.add("active");
+                    }
 
                 }
+            );
 
-            }
-        );
-
-    });
+        }
+    );
 
 
     /*
@@ -487,48 +738,57 @@ function initializeNavigation() {
         );
 
 
-    internalLinks.forEach(function (link) {
+    internalLinks.forEach(
+        function (link) {
 
-        link.addEventListener(
-            "click",
-            function (event) {
+            link.addEventListener(
+                "click",
+                function (event) {
 
-                const targetId =
-                    link.getAttribute("href");
+                    const targetId =
+                        link.getAttribute(
+                            "href"
+                        );
 
 
-                if (
-                    !targetId ||
-                    targetId === "#"
-                ) {
+                    if (
+                        !targetId ||
+                        targetId === "#"
+                    ) {
 
-                    return;
+                        return;
+
+                    }
+
+
+                    const target =
+                        document.querySelector(
+                            targetId
+                        );
+
+
+                    if (target) {
+
+                        event.preventDefault();
+
+
+                        target.scrollIntoView({
+
+                            behavior:
+                                "smooth",
+
+                            block:
+                                "start"
+
+                        });
+
+                    }
 
                 }
+            );
 
-
-                const target =
-                    document.querySelector(
-                        targetId
-                    );
-
-
-                if (target) {
-
-                    event.preventDefault();
-
-
-                    target.scrollIntoView({
-                        behavior: "smooth",
-                        block: "start"
-                    });
-
-                }
-
-            }
-        );
-
-    });
+        }
+    );
 
 }
 
@@ -561,7 +821,9 @@ function addToCart() {
 function updateCartCount() {
 
     const cartCounter =
-        document.getElementById("cartCount");
+        document.getElementById(
+            "cartCount"
+        );
 
 
     if (cartCounter) {
@@ -586,11 +848,14 @@ function resetProductFilter() {
         );
 
 
-    products.forEach(function (product) {
+    products.forEach(
+        function (product) {
 
-        product.style.display = "";
+            product.style.display =
+                "";
 
-    });
+        }
+    );
 
 }
 
@@ -612,245 +877,12 @@ window.addEventListener(
     }
 );
 
-/* =========================================================
-   HIPSTER — MEGA MENU (shared behavior)
-   Include this AFTER js/script.js
-========================================================= */
-
-document.addEventListener("DOMContentLoaded", function () {
-
-    initializeMegaMenus();
-    initializeAccountDropdown();
-
-});
-
 
 /* =========================================================
    CATEGORY MEGA MENUS
-   Works for any element structured as:
-   <div class="nav-item has-mega">
-       <a class="nav-link">...</a>
-       <div class="mega-panel">...</div>
-   </div>
+   NOTE:
+   The actual mega-menu initialization is handled
+   by js/mega-menu.js.
+   
+   Do NOT duplicate initializeMegaMenus() here.
 ========================================================= */
-
-function initializeMegaMenus() {
-
-    const navItems =
-        document.querySelectorAll(".nav-item.has-mega");
-
-    let closeTimer = null;
-
-
-    navItems.forEach(function (item) {
-
-        const panel =
-            item.querySelector(".mega-panel");
-
-        if (!panel) {
-            return;
-        }
-
-
-        /*
-         * Open on hover, with a tiny delay so the panel
-         * doesn't flicker when moving across the nav bar.
-         */
-
-        item.addEventListener("mouseenter", function () {
-
-            clearTimeout(closeTimer);
-
-            closeAllMegaMenus();
-
-            item.classList.add("mega-open");
-            panel.classList.add("mega-visible");
-
-        });
-
-
-        /*
-         * Close on leave, with a short delay so the user can
-         * move the cursor diagonally down into the panel
-         * without it closing.
-         */
-
-        item.addEventListener("mouseleave", function () {
-
-            closeTimer = setTimeout(function () {
-
-                item.classList.remove("mega-open");
-                panel.classList.remove("mega-visible");
-
-            }, 150);
-
-        });
-
-
-        /*
-         * Keep it open while hovering the panel itself.
-         */
-
-        panel.addEventListener("mouseenter", function () {
-
-            clearTimeout(closeTimer);
-
-        });
-
-        panel.addEventListener("mouseleave", function () {
-
-            closeTimer = setTimeout(function () {
-
-                item.classList.remove("mega-open");
-                panel.classList.remove("mega-visible");
-
-            }, 150);
-
-        });
-
-
-        /*
-         * Keyboard / focus accessibility.
-         */
-
-        const trigger =
-            item.querySelector(".nav-link");
-
-        if (trigger) {
-
-            trigger.addEventListener("focus", function () {
-
-                closeAllMegaMenus();
-
-                item.classList.add("mega-open");
-                panel.classList.add("mega-visible");
-
-            });
-
-        }
-
-    });
-
-
-    /*
-     * Close everything if focus/hover leaves the nav bar
-     * entirely (e.g. Escape key).
-     */
-
-    document.addEventListener("keydown", function (event) {
-
-        if (event.key === "Escape") {
-
-            closeAllMegaMenus();
-
-        }
-
-    });
-
-}
-
-
-function closeAllMegaMenus() {
-
-    document
-        .querySelectorAll(".nav-item.has-mega.mega-open")
-        .forEach(function (item) {
-
-            item.classList.remove("mega-open");
-
-            const panel =
-                item.querySelector(".mega-panel");
-
-            if (panel) {
-
-                panel.classList.remove("mega-visible");
-
-            }
-
-        });
-
-}
-
-
-/* =========================================================
-   ACCOUNT DROPDOWN
-   Works for:
-   <button id="accountButton">...</button>
-   <div class="account-dropdown" id="accountDropdown">...</div>
-========================================================= */
-
-function initializeAccountDropdown() {
-
-    const accountButton =
-        document.getElementById("accountButton");
-
-    const accountDropdown =
-        document.getElementById("accountDropdown");
-
-    if (!accountButton || !accountDropdown) {
-        return;
-    }
-
-
-    let hoverTimer = null;
-
-
-    function openDropdown() {
-
-        clearTimeout(hoverTimer);
-
-        accountDropdown.classList.add("mega-visible");
-
-    }
-
-    function scheduleClose() {
-
-        hoverTimer = setTimeout(function () {
-
-            accountDropdown.classList.remove("mega-visible");
-
-        }, 150);
-
-    }
-
-
-    accountButton.addEventListener("mouseenter", openDropdown);
-    accountButton.addEventListener("mouseleave", scheduleClose);
-
-    accountDropdown.addEventListener("mouseenter", function () {
-
-        clearTimeout(hoverTimer);
-
-    });
-
-    accountDropdown.addEventListener("mouseleave", scheduleClose);
-
-
-    /*
-     * Also support click/tap, for touch devices and keyboard use.
-     */
-
-    accountButton.addEventListener("click", function (event) {
-
-        event.preventDefault();
-
-        accountDropdown.classList.toggle("mega-visible");
-
-    });
-
-
-    document.addEventListener("click", function (event) {
-
-        const clickedInside =
-            accountButton.contains(event.target) ||
-            accountDropdown.contains(event.target);
-
-        if (!clickedInside) {
-
-            accountDropdown.classList.remove("mega-visible");
-
-        }
-
-    });
-
-}
